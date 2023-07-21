@@ -1,0 +1,131 @@
+/* ======== Global Styles ======== */
+*,
+::after,
+::before {margin: 0;padding: 0; box-sizing: border-box;}
+li {list-style-type: none;} 
+ul { margin: 0;padding: 0;list-style-type: none;}
+h1, h2, h3, h4, h5, h6{font-size: inherit;font-weight: inherit;}
+
+
+/* ======== Variables ======== */
+:root {
+    --clr-header: #274E7D;
+    --clr-dark-hover: #130873;
+
+    --size-header: 816px;  /* кратно кол-ву элементвов */
+    --count-btns: 8; /* всего 8 элементов  */
+}
+/*colors
+    #0E53A7
+    #274E7D
+    #04346C
+    #4284D3
+    #6899D#
+*/
+
+body {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+}
+
+/* ======== Header ======== */
+.header {
+    display: flex;
+    height: 50px;
+    color: white;
+    background-color: var(--clr-header);
+
+    
+}
+
+.header__name {
+    display: block;
+    font-weight: 700;
+    margin: auto 20px;
+}
+
+.menu {
+    display: flex;
+    max-width: var(--size-header);
+    width: 100%;
+    justify-content: space-between;
+}
+
+
+/*  1 и 2 вложенность   */
+.menu__btn {
+    height: 100%;
+    width: calc(var(--size-header) / var(--count-btns));
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    cursor: default;
+}
+
+.menu__list {
+    width: 100%;
+}
+
+.menu__option {
+    position: relative;
+}
+
+.sub-menu__list {
+    width: 100%;
+
+    display: none;
+    position: absolute;
+    background-color: var(--clr-header);
+    top: 30px;
+}
+
+.sub-menu__option {
+    padding: 4px 0px;
+    transition: background-color .1s linear;
+}
+
+.sub-menu__option:hover {
+    background-color: var(--clr-dark-hover);
+}
+
+.menu__btn {
+    transition: background-color .1s linear;
+}
+
+.menu__btn:hover {
+    background-color: #5FD3B3;
+}
+
+.menu__btn:hover .sub-menu__list {
+    display: block;
+}
+
+.arrow {
+    position: absolute;
+    top: 5px;
+    margin-left: 5px;
+    width: 0;
+    height: 0;
+    border-top: 6px solid #8b87ad;
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+}
+/*  1 и 2 вложенность   */
+
+
+
+
+/* ======== Section ======== */
+.section {
+}
+.tools {
+}
+.tools__btn {
+}
+.nodes-info {
+}
+.node {
+}

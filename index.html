@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css" />
+    <title>Pathfinding Visualizer</title>
+</head>
+<body>
+
+    <header class="header">
+        <h3 class="header__name">Pathfinding Visualizer</h3>
+        <nav class="menu">
+
+            <div class="menu__btn">
+                <div class="menu__list">
+                    <div class="menu__option">
+                        Algorithm
+                        <span class="menu_arrow arrow"></span>
+                        <div class="sub-menu__list">
+                            <div class="sub-menu__option">Dijkstra</div>
+                            <div class="sub-menu__option">Floyd</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="menu__btn">
+                <div class="menu__list">
+                    <div class="menu__option">
+                        Maze
+                        <span class="menu_arrow arrow"></span>
+                        <div class="sub-menu__list">
+                            <div class="sub-menu__option">Maze 1</div>
+                            <div class="sub-menu__option">Random Maze</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+
+            <div class="menu__btn">Quick Setup</div>
+            <div class="menu__btn">Visualise<span></span></div>
+            
+            <div class="menu__btn">Clear Board</div>
+            <div class="menu__btn">Clear Wall</div>
+            <div class="menu__btn">Clear Path</div>
+
+
+            <div class="menu__btn">
+                <div class="menu__list">
+                    <div class="menu__option">
+                        Speed
+                        <span class="menu_arrow arrow"></span>
+                        <div class="sub-menu__list">
+                            <div class="sub-menu__option">Slow</div>
+                            <div class="sub-menu__option">Medium</div>
+                            <div class="sub-menu__option">Fast</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+
+        </nav>
+    </header>
+
+    <div class="section">
+        <div class="tools">
+            <div class="tools__btn">Start Node</div>
+            <div class="tools__btn">Target Node</div>
+            <div class="tools__btn">Wall Node</div>
+        </div>
+
+        <div class="nodes-info">
+            <div class="node">Unvisited Node</div>
+            <div class="node">Visited Nodes</div>
+            <div class="node">Shortest-path Node</div>
+            <div class="node">Wall Node</div>
+        </div>
+    </div>
+</body>
+</html>
