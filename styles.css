@@ -11,9 +11,13 @@ h1, h2, h3, h4, h5, h6{font-size: inherit;font-weight: inherit;}
 :root {
     --clr-header: #274E7D;
     --clr-dark-hover: #130873;
+    --clr-section: #d2ceed;
 
     --size-header: 816px;  /* кратно кол-ву элементвов */
     --count-btns: 8; /* всего 8 элементов  */
+
+    --size-section: 1120px;  /* кратно кол-ву элементвов */
+    --count-section-item: 7; /* всего 7 элементов  */
 }
 /*colors
     #0E53A7
@@ -48,6 +52,8 @@ body {
     display: flex;
     max-width: var(--size-header);
     width: 100%;
+
+    align-items: center;
     justify-content: space-between;
 }
 
@@ -92,6 +98,8 @@ body {
 }
 
 .menu__btn {
+    height: 90%;
+    border-radius: 10px;
     transition: background-color .1s linear;
 }
 
@@ -120,12 +128,22 @@ body {
 
 /* ======== Section ======== */
 .section {
+    height: 80px;
+    background-color: rgba(255, 255, 255);
 }
-.tools {
+
+.section__container {
+    display: flex;
+    justify-content: space-between;
+
+    height: 100%;
+    max-width: var(--size-section);
+    padding: 0px 50px;
 }
-.tools__btn {
+
+.section__item{
+    margin: auto auto;
 }
-.nodes-info {
-}
-.node {
+
+.section__item span {
 }
