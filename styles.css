@@ -143,7 +143,13 @@ body {
 
 .section__item{
     margin: auto auto;
+    display: flex;
+    align-items: center;
 }
 
-.section__item span {
+.section__item img{
+    width: 25px;
+    height: 25px;
+
+    margin: -5px 0px 0px 0px;
 }
