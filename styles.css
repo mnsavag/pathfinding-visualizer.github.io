@@ -31,8 +31,7 @@ body {
     font-family: "Open Sans", sans-serif;
     font-size: 16px;
 
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh;
 }
 
 /* ======== Header ======== */
@@ -90,12 +89,13 @@ body {
 }
 
 .sub-menu__option {
-    padding: 4px 0px;
+    padding: 8px 0px;
+    border-radius: 2px;
     transition: background-color .1s linear;
 }
 
 .sub-menu__option:hover {
-    background-color: var(--clr-dark-hover);
+    background-color: #5FD3B3;;
 }
 
 .menu__btn {
@@ -146,6 +146,11 @@ body {
     margin: auto auto;
     display: flex;
     align-items: center;
+
+    height: 50%;
+    border-radius: 5px;
+
+    cursor: default;
 }
 
 .section__item img{
@@ -159,4 +164,11 @@ body {
 /*  Grid   */
 .grid {
     width: 100%;
+    height: calc(100vh - 50px - 80px);
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+td {
+    border: 1px solid black;
 }
