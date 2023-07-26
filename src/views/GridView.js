@@ -12,7 +12,7 @@ export class GridView {
         for (let y = 0; y < this.gridObj.yCellCnt; y++) {
             const row = document.createElement(rowTag)
             for (let x = 0; x < this.gridObj.xCellCnt; x++) {
-                const cell = CellView.getCellDOM(cellTag, this.gridObj.cells[y][x].id, this.gridObj.cells[y][x].state);
+                const cell = CellView.getCellDOM(cellTag, `${y} ${x}`, this.gridObj.cells[y][x].state);
                 row.appendChild(cell)
             }
             this.gridView.appendChild(row)
