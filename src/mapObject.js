@@ -2,9 +2,7 @@ import { getDOMElement } from "./utility.js"
 
 
 export class MapObject {
-    constructor(x, y, cellClass, logo) {
-        this.x = x
-        this.y = y
+    constructor(cellClass, logo) {
         this.cellClass = cellClass
         this.logo = logo
     }

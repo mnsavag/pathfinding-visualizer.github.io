@@ -17,11 +17,13 @@ function main() {
 
     mapView.initArrayMap()
 
-    const player = new MapObject(12, 15, cellStates.START, "../img/node-start.png")
-    mapView.addObject(player)
+    const player = new MapObject(cellStates.START, "../img/node-start.png")
+    mapView.addObject(15, 12, player)
 
-    const finish = new MapObject(46, 6, cellStates.FINISH, "../img/node-finish.png")
-    mapView.addObject(finish)
+    const finish = new MapObject(cellStates.FINISH, "../img/node-finish.png")
+    mapView.addObject(6, 46, finish)
+
+    mapView.addDraggableEvent()
 }
 
 main()

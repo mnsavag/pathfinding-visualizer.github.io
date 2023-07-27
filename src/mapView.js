@@ -26,12 +26,6 @@ export class MapView {
         // change later
         this.mapView.style.height = this._getResizeSideInPX(document.documentElement.clientHeight - 50 - 80, this.xCellCnt)
         this.mapView.style.width = this._getResizeSideInPX(document.documentElement.clientWidth, this.yCellCnt)
-        //for (const row of this.mapView.childNodes) {
-        //    for (const cell of row.childNodes) {
-        //        cell.style.width = this.mapView.style.width / (this.xCellCnt - 1)
-        //        cell.style.height = this.mapView.style.height / (this.yCellCnt - 1)
-        //    }
-        //}
     }
 
     _getResizeSideInPX(availableLen, cellCnt) {
@@ -53,8 +47,58 @@ export class MapView {
         return this._map
     }
 
-    addObject(mapObj) {
-       this._map[mapObj.y][mapObj.x].className = mapObj.cellClass
-       this._map[mapObj.y][mapObj.x].appendChild(mapObj.getDOMView())
+    addObject(y, x, mapObj) {
+       this._map[y][x].className = mapObj.cellClass
+       this._map[y][x].appendChild(mapObj.getDOMView())
+    }
+    
+    
+    addDraggableEvent() {
+        const dragList = []
+        for (let i = 0; i < this._map.length; i++) {
+            for (let j = 0; j < this._map[i].length; j++){
+                if (this._map[i][j].querySelector(".mapObject")) {
+                    const dragObj = this._map[i][j].querySelector(".mapObject")
+                    dragList.push({cell: this._map[i][j], 
+                                cellStateName: this._map[i][j].className,
+                                obj: dragObj}) // переделать потом как-нибудь, что в клетке мог быть только 1
+                }
+            }
+        }
+        
+        dragList.forEach(draggable => {
+            draggable.obj.addEventListener("dragstart", () => {
+                draggable.cell.className = "unvisited"
+                draggable.obj.classList.add("dragging")
+            } )
+        })
+    
+        dragList.forEach(draggable => {
+            draggable.obj.addEventListener("dragend", (e) => {
+                draggable.cell = draggable.obj.parentElement
+                draggable.cell.className = draggable.cellStateName
+                draggable.obj.classList.remove("dragging")
+                
+            })
+        })
+    
+        for (let i = 0; i < this._map.length; i++) {
+            for (let j = 0; j < this._map[i].length; j++){
+                this._map[i][j].addEventListener("drop", e => {
+                    if (this._map[i][j].className == cellStates.UNVISITED) {
+                        const draggable = document.querySelector(".dragging")
+                        this._map[i][j].appendChild(draggable)
+                }
+                })
+            }
+        }
+
+        for (let i = 0; i < this._map.length; i++) {
+            for (let j = 0; j < this._map[i].length; j++){
+                this._map[i][j].addEventListener("dragover", e => {
+                    e.preventDefault()
+                })
+            }
+        }
     }
 }
