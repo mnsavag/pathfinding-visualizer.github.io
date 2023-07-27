@@ -1,8 +1,7 @@
-export const CellStates = Object.freeze({
+export const cellStates = Object.freeze({
     UNVISITED: "unvisited",
     VISITED: "visited",
     WALL: "wall",
     START: "start",
-    FINISH: "finish"
-    // PATH?
+    FINISH: "finish",
 })

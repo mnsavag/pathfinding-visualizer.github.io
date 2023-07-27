@@ -170,5 +170,14 @@ body {
 }
 
 td {
+    position: relative;
     border: 1px solid black;
+}
+
+/* Object classes */
+.mapObject{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
 }
