@@ -30,7 +30,8 @@ export class MapView {
 
     _getResizeSideInPX(availableLen, cellCnt) {
         let len = getGreatestMultiple(availableLen, cellCnt)
-        return (len - len / cellCnt).toString() + "px"
+        // OLD return (len - len / cellCnt).toString() + "px"
+        return len.toString() + "px"
     }
 
     initArrayMap() {
@@ -95,8 +96,8 @@ export class MapView {
 
         for (let i = 0; i < this._map.length; i++) {
             for (let j = 0; j < this._map[i].length; j++){
-                this._map[i][j].addEventListener("dragover", e => {
-                    e.preventDefault()
+                this._map[i][j].addEventListener("dragover", event => {
+                    event.preventDefault()
                 })
             }
         }

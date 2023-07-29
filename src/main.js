@@ -1,14 +1,16 @@
 import { MapView} from "./mapView.js"
 import { cellStates } from "./cellStates.js"
 import { MapObject } from "./mapObject.js"
+import { CellStateHandler } from "./cellStateHandler.js"
+import { preventSelection } from "./disableSelection.js"
 
-const xCellCnt = 64
-const yCellCnt = 23
-
+const xCellCnt = 68
+const yCellCnt = 26
+// 64 23
 
 /* Разделить на 2 метода, отображение DOM и получение массива на основе DOM
-    Добавить старт, финиш и drag and drops
 */
+// Добавить метод где будут регистрироваться все хэндлеры программы, как в тг боте
 
 function main() {
     const mapView = new MapView(document.querySelector(".grid"), xCellCnt, yCellCnt)
@@ -24,6 +26,8 @@ function main() {
     mapView.addObject(6, 46, finish)
 
     mapView.addDraggableEvent()
+    preventSelection(mapView.mapView)
+    CellStateHandler.addWallState(mapView.getArrayMap()) 
 }
 
 main()
