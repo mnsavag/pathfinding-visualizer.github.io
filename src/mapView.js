@@ -21,7 +21,7 @@ export class MapView {
         }
         this.resizeMapView()
     }
-
+ 
     resizeMapView() {
         // change later
         this.mapView.style.height = this._getResizeSideInPX(document.documentElement.clientHeight - 50 - 80, this.xCellCnt)

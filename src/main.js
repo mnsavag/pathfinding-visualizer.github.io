@@ -3,6 +3,9 @@ import { cellStates } from "./cellStates.js"
 import { MapObject } from "./mapObject.js"
 import { CellStateHandler } from "./cellStateHandler.js"
 import { preventSelection } from "./disableSelection.js"
+import { addClearWallEvent } from "./menuBtn/clearWallBtn.js"
+import { registerAlgorithmsBtn } from "./menuBtn/algorithmsBtn.js"
+
 
 const xCellCnt = 68
 const yCellCnt = 26
@@ -28,6 +31,9 @@ function main() {
     mapView.addDraggableEvent()
     preventSelection(mapView.mapView)
     CellStateHandler.addWallState(mapView.getArrayMap()) 
+
+    addClearWallEvent(mapView.getArrayMap())
+    registerAlgorithmsBtn(mapView.getArrayMap())
 }
 
 main()
