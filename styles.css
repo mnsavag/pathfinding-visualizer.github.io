@@ -13,7 +13,7 @@ h1, h2, h3, h4, h5, h6{font-size: inherit;font-weight: inherit;}
     --clr-dark-hover: #130873;
     --clr-section: #d2ceed;
 
-    --size-header: 816px;  /* кратно кол-ву элементвов */
+    --size-header: 840px;  /* кратно кол-ву элементвов */
     --count-btns: 8; /* всего 8 элементов  */
 
     --size-section: 1120px;  /* кратно кол-ву элементвов */
@@ -172,6 +172,59 @@ body {
 td {
     position: relative;
     border: 1px solid #abbbd6;
+}
+
+/* Animation Cell */
+.div-animation {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+
+    background-color: #F26DCA;
+    animation-name: div-animation-spawn;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes div-animation-spawn {
+    20% {
+        left: 25%;
+
+        height: 50%;
+        width: 50%;
+        border-radius: 50%;
+        background-color: #F26DCA;
+    }
+
+    50% {
+        left: 25%;
+
+        height: 50%;
+        width: 50%;
+        border-radius: 50%;
+        background-color: #F23CBB;
+    }
+
+    90% {
+        left: 0%;
+
+        height: 100%;
+        width: 100%;
+        border-radius: 0%;
+
+        background-color: #ff87db;
+    }
+
+    100% {
+        left: 0%;
+
+        height: 100%;
+        width: 100%;
+        border-radius: 0%;
+
+        background-color: #AB2B84;
+    }
 }
 
 /* Object classes */

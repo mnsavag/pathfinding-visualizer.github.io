@@ -1,4 +1,9 @@
 import { cellStates } from "/src/cellStates.js"
+import { aminationCell } from "/src/animationCell.js"
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms))
+}
 
 export class Algorithms {
     static search(map){}
@@ -32,7 +37,7 @@ export class Algorithms {
 }
 
 export class BFS extends Algorithms {
-    static search(map) {
+    static async search(map) {
         const [sY, sX] = super.getCellByState(cellStates.START, map)
         const [fY, fX] = super.getCellByState(cellStates.FINISH, map)
 
@@ -41,8 +46,13 @@ export class BFS extends Algorithms {
 
         let stack = [[sY, sX]]
         let visited = new Map()
+
         while (stack.length > 0) {
             const [y, x] = stack.shift()
+            
+            aminationCell(map[y][x])
+            
+            await sleep(50)
             if (y === fY && x === fX) {
                 break
             }
