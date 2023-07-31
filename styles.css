@@ -183,7 +183,7 @@ td {
 
     background-color: #F26DCA;
     animation-name: div-animation-spawn;
-    animation-duration: 2s;
+    animation-duration: 1s;
     animation-fill-mode: forwards;
 }
 
@@ -206,7 +206,7 @@ td {
         background-color: #F23CBB;
     }
 
-    90% {
+    80% {
         left: 0%;
 
         height: 100%;
@@ -214,6 +214,16 @@ td {
         border-radius: 0%;
 
         background-color: #ff87db;
+    }
+
+    90% {
+        left: 0%;
+
+        height: 120%;
+        width: 120%;
+        border-radius: 0%;
+
+        background-color: #AB2B84;
     }
 
     100% {
@@ -225,6 +235,15 @@ td {
 
         background-color: #AB2B84;
     }
+}
+
+.path-animation {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 100%;
+    width: 100%;
+    background-color: #ffb540;
 }
 
 /* Object classes */

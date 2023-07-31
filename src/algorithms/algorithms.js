@@ -1,7 +1,7 @@
 import { cellStates } from "/src/cellStates.js"
-import { aminationCell } from "/src/animationCell.js"
+import { animateCellSpawn, animateCellPath } from "/src/animationCell.js"
 
-function sleep(ms) {
+function sleep(ms) { // перенести
     return new Promise(resolve => setTimeout(resolve, ms))
 }
 
@@ -34,6 +34,24 @@ export class Algorithms {
         }
         return result
     }
+
+    static async animatePath(map, ancestors, y, x) {
+        let path = []
+       
+        let currNode = ancestors.find(anc => anc.currY === y && anc.currX === x) 
+        while (currNode) {
+            y = currNode.prevY
+            x = currNode.prevX
+            currNode = ancestors.find(anc => anc.currY === y && anc.currX === x) 
+            path.push([y, x])
+        }
+        path.pop()
+        while (path.length > 0) {
+            const [y, x] = path.pop()
+            animateCellPath(map[y][x])
+            await sleep(50)
+        }
+    }
 }
 
 export class BFS extends Algorithms {
@@ -44,13 +62,14 @@ export class BFS extends Algorithms {
         const height = map.length
         const width = map[0].length
 
+        let ancestors = []
+
         let stack = [[sY, sX]]
         let visited = new Map()
-
         while (stack.length > 0) {
             const [y, x] = stack.shift()
             
-            aminationCell(map[y][x])
+            animateCellSpawn(map[y][x])
             
             await sleep(50)
             if (y === fY && x === fX) {
@@ -62,8 +81,17 @@ export class BFS extends Algorithms {
                     stack.push(pairYX)
                     map[pairYX[0]][pairYX[1]].className = cellStates.VISITED
                     visited.set(pairYX[0], pairYX[1])
+
+                    ancestors.push({
+                        currY: pairYX[0],
+                        currX: pairYX[1],
+                        prevY: y,
+                        prevX: x
+                    })
                 }
             }  
         }
+
+        super.animatePath(map, ancestors, fY, fX)
     }
 }
