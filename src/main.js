@@ -7,6 +7,7 @@ import { addClearPathEvent, addClearWallEvent } from "./handlers/menu/clearButto
 import { registerAlgorithmsBtn } from "./handlers/menu/algoBtnsHandler.js"
 import { addDraggableEvent, addWallEvent } from "./handlers/mapDOMHandelrs.js"
 
+import { addMenuArrow } from "./interfaceScript.js"
 
 const xCellCnt = 68
 const yCellCnt = 26
@@ -16,6 +17,8 @@ const yCellCnt = 26
 // Добавить метод где будут регистрироваться все хэндлеры программы, как в тг боте
 
 function main() {
+    addMenuArrow()
+
     const mapDOM = new MapDOM(document.querySelector(".grid"), xCellCnt, yCellCnt)
     mapDOM.createMapDOM()
     window.addEventListener("resize", () => requestAnimationFrame(mapDOM.resizeMapDOM.bind(mapDOM)))

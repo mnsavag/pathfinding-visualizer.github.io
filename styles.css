@@ -13,9 +13,6 @@ h1, h2, h3, h4, h5, h6{font-size: inherit;font-weight: inherit;}
     --clr-dark-hover: #130873;
     --clr-section: #d2ceed;
 
-    --size-header: 840px;  /* кратно кол-ву элементвов */
-    --count-btns: 8; /* всего 8 элементов  */
-
     --size-section: 1120px;  /* кратно кол-ву элементвов */
     --count-section-item: 7; /* всего 7 элементов  */
 }
@@ -40,28 +37,29 @@ body {
     height: 50px;
     color: white;
     background-color: var(--clr-header);
+
+    padding: 0 30px;
 }
 
 .header__name {
-    display: block;
+    display: inline-block;
     font-weight: 700;
-    margin: auto 20px;
+    min-width: 180px;
+    margin: auto 0;
 }
 
 .menu {
     display: flex;
-    max-width: var(--size-header);
     width: 100%;
 
     align-items: center;
-    justify-content: space-between;
 }
 
 
 /*  1 и 2 вложенность   */
 .menu__btn {
     height: 100%;
-    width: calc(var(--size-header) / var(--count-btns));
+    min-width: 110px;
 
     display: flex;
     align-items: center;
@@ -71,37 +69,13 @@ body {
     cursor: default;
 }
 
-.menu__list {
-    width: 100%;
-}
-
-.menu__option {
-    position: relative;
-}
-
-.sub-menu__list {
-    width: 100%;
-
-    display: none;
-    position: absolute;
-    background-color: var(--clr-header);
-    top: 30px;
-}
-
-.sub-menu__option {
-    padding: 8px 0px;
-    border-radius: 2px;
-    transition: background-color .1s linear;
-}
-
-.sub-menu__option:hover {
-    background-color: #5FD3B3;;
-}
-
 .menu__btn {
     height: 90%;
     border-radius: 10px;
     transition: background-color .1s linear;
+
+    margin-left: 2.5px;
+    margin-right: 2.5px;
 }
 
 .menu__btn:hover {
@@ -112,16 +86,58 @@ body {
     display: block;
 }
 
+
+#visualise {
+    min-width: 150px;
+}
+
+.menu__list {
+    width: 100%;
+}
+
+.menu__option {
+    position: relative;
+    width: 100%;
+}
+
+.sub-menu__list {
+    display: none;
+    position: absolute;
+    padding-top: 20px;
+    min-width: 100%;
+    z-index: 100;
+}
+
+.sub-menu__list>li {
+    background-color: var(--clr-header);
+}
+
+.sub-menu__option {
+    display: block;
+    padding: 8px 0px;
+    transition: background-color .1s linear;
+}
+
+.sub-menu__option:hover {
+    background-color: #5FD3B3;;
+}
+
 .arrow {
     position: absolute;
     top: 5px;
-    margin-left: 5px;
+
     width: 0;
     height: 0;
     border-top: 6px solid #8b87ad;
     border-right: 6px solid transparent;
     border-left: 6px solid transparent;
+
 }
+
+.parent {
+    margin: 0px 5px 0px 0px;
+}
+
 /*  1 и 2 вложенность   */
 
 
@@ -159,7 +175,6 @@ body {
 
     margin: -5px 0px 0px 0px;
 }
-
 
 /*  Grid   */
 .grid {

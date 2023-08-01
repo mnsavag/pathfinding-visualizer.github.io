@@ -1,7 +1,7 @@
 import { Algorithm } from "/src/models/algorithms/algorithm.js"
 import { BFS } from "/src/models/algorithms/bfs.js"
 
-const visualiseSpan = document.getElementById("visualise-span")
+const visualiseBtn = document.getElementById("visualise")
 
 let currProgrammState
 const programmStates = Object.freeze({
@@ -13,7 +13,8 @@ function registerBFSBtn() {
     /* BFS Button */
     const bfsBtn = document.getElementById("BFS")
     bfsBtn.addEventListener("click", () => {
-    visualiseSpan.innerHTML = " BFS!"
+    visualiseBtn.innerHTML = "Visualise BFS!"
+    
     currProgrammState = programmStates.BFS
     })
     /* BFS Button */
