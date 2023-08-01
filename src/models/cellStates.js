@@ -4,4 +4,5 @@ export const cellStates = Object.freeze({
     WALL: "wall",
     START: "start",
     FINISH: "finish",
+    OBJECT: "mapObject"
 })

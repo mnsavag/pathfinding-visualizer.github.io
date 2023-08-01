@@ -1,4 +1,4 @@
-import { cellStates } from "../cellStates.js"
+import { cellStates } from "/src/models/cellStates.js"
 
 
 export function addClearWallEvent(mapArray) {

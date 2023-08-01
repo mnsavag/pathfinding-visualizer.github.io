@@ -1,6 +1,3 @@
-import { getDOMElement } from "./utility.js"
-
-
 export class MapObject {
     constructor(cellClass, logo) {
         this.cellClass = cellClass

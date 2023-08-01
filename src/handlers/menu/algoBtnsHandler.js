@@ -1,4 +1,5 @@
-import { Algorithms, BFS } from "/src/algorithms/algorithms.js"
+import { Algorithm } from "/src/models/algorithms/algorithm.js"
+import { BFS } from "/src/models/algorithms/bfs.js"
 
 const visualiseSpan = document.getElementById("visualise-span")
 

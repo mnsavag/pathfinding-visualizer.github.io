@@ -10,3 +10,7 @@ export function getDOMElement(tag, id, className) {
     domElem.className = className
     return domElem
 }
+
+export function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms))
+}

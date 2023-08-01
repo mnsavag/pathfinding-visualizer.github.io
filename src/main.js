@@ -1,39 +1,38 @@
-import { MapView} from "./mapView.js"
-import { cellStates } from "./cellStates.js"
-import { MapObject } from "./mapObject.js"
-import { CellStateHandler } from "./cellStateHandler.js"
+import { MapDOM} from "./models/mapDOM.js"
+import { Map } from "./models/map.js"
+import { cellStates } from "./models/cellStates.js"
+import { MapObject } from "./models/mapObject.js"
 import { preventSelection } from "./disableSelection.js"
-import { addClearWallEvent } from "./menuBtn/clearWallBtn.js"
-import { registerAlgorithmsBtn } from "./menuBtn/algorithmsBtn.js"
+import { addClearWallEvent } from "./handlers/menu/clearWallBtnHandler.js"
+import { registerAlgorithmsBtn } from "./handlers/menu/algoBtnsHandler.js"
+import { addDraggableEvent, addWallEvent } from "./handlers/mapDOMHandelrs.js"
 
 
 const xCellCnt = 68
 const yCellCnt = 26
-// 64 23
 
 /* Разделить на 2 метода, отображение DOM и получение массива на основе DOM
 */
 // Добавить метод где будут регистрироваться все хэндлеры программы, как в тг боте
 
 function main() {
-    const mapView = new MapView(document.querySelector(".grid"), xCellCnt, yCellCnt)
-    mapView.createMapView("tr", "td")
-    window.addEventListener("resize", () => requestAnimationFrame(mapView.resizeMapView.bind(mapView)))
-
-    mapView.initArrayMap()
-
+    const mapDOM = new MapDOM(document.querySelector(".grid"), xCellCnt, yCellCnt)
+    mapDOM.createMapDOM()
+    window.addEventListener("resize", () => requestAnimationFrame(mapDOM.resizeMapDOM.bind(mapDOM)))
+    
+    preventSelection(mapDOM.getMapSelector())
+    
+    const map = new Map(mapDOM.getMapSelector())
     const player = new MapObject(cellStates.START, "../img/node-start.png")
-    mapView.addObject(15, 12, player)
-
+    map.addObject(15, 12, player)
     const finish = new MapObject(cellStates.FINISH, "../img/node-finish.png")
-    mapView.addObject(6, 46, finish)
+    map.addObject(6, 46, finish)
+    // map.addDraggableEvent()
+    addDraggableEvent(mapDOM.getMapSelector()) // проблема в том что все элементы нужно сналача зарегистрировать в в map, потом вызвать mapDOM
 
-    mapView.addDraggableEvent()
-    preventSelection(mapView.mapView)
-    CellStateHandler.addWallState(mapView.getArrayMap()) 
-
-    addClearWallEvent(mapView.getArrayMap())
-    registerAlgorithmsBtn(mapView.getArrayMap())
+    addWallEvent(mapDOM.getMapSelector())
+    addClearWallEvent(map.getMap())
+    registerAlgorithmsBtn(map.getMap())
 }
 
 main()
