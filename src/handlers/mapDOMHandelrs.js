@@ -38,7 +38,6 @@ export function addDraggableEvent(mapSelector) {
             node.addEventListener("drop", () => {
                 if (node.className == cellStates.UNVISITED) {
                     const draggable = document.querySelector(".dragging")
-                    console.log(draggable)
                     node.appendChild(draggable)
                 }
             })

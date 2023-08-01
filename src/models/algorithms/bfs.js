@@ -40,7 +40,8 @@ export class BFS extends Algorithm {
                 }
             }  
         }
-
+        map[fY][fX].className = cellStates.FINISH // пофиксить
+        map[sY][sX].className = cellStates.START
         super.animatePath(map, ancestors, fY, fX)
     }
 }

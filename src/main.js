@@ -3,7 +3,7 @@ import { Map } from "./models/map.js"
 import { cellStates } from "./models/cellStates.js"
 import { MapObject } from "./models/mapObject.js"
 import { preventSelection } from "./disableSelection.js"
-import { addClearWallEvent } from "./handlers/menu/clearWallBtnHandler.js"
+import { addClearPathEvent, addClearWallEvent } from "./handlers/menu/clearButtonsHandlers.js"
 import { registerAlgorithmsBtn } from "./handlers/menu/algoBtnsHandler.js"
 import { addDraggableEvent, addWallEvent } from "./handlers/mapDOMHandelrs.js"
 
@@ -27,11 +27,11 @@ function main() {
     map.addObject(15, 12, player)
     const finish = new MapObject(cellStates.FINISH, "../img/node-finish.png")
     map.addObject(6, 46, finish)
-    // map.addDraggableEvent()
     addDraggableEvent(mapDOM.getMapSelector()) // проблема в том что все элементы нужно сналача зарегистрировать в в map, потом вызвать mapDOM
 
     addWallEvent(mapDOM.getMapSelector())
     addClearWallEvent(map.getMap())
+    addClearPathEvent(map.getMap())
     registerAlgorithmsBtn(map.getMap())
 }
 
