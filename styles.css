@@ -26,7 +26,6 @@ body {
     font-size: 16px;
 
     min-height: 100vh;
-    min-width: 970px;
 }
 
 /* ======== Header ======== */
@@ -62,6 +61,22 @@ body {
     }
     .menu {
         justify-content: center;
+    }
+
+    .section__container {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 969px) {
+    .header {
+        height: 180px;
+    }
+
+    .menu {
+        flex-wrap: wrap;
+        height: 20%;
     }
 
     .section__container {
