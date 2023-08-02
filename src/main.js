@@ -3,7 +3,7 @@ import { Map } from "./models/map.js"
 import { cellStates } from "./models/cellStates.js"
 import { MapObject } from "./models/mapObject.js"
 import { preventSelection } from "./disableSelection.js"
-import { addClearPathEvent, addClearWallEvent } from "./handlers/menu/clearButtonsHandlers.js"
+import { addClearPathEvent, addClearWallEvent, addClearBoardEvent } from "./handlers/menu/clearButtonsHandlers.js"
 import { registerAlgorithmsBtn } from "./handlers/menu/algoBtnsHandler.js"
 import { addDraggableEvent, addWallEvent } from "./handlers/mapDOMHandelrs.js"
 
@@ -33,8 +33,9 @@ function main() {
     addDraggableEvent(mapDOM.getMapSelector()) // проблема в том что все элементы нужно сналача зарегистрировать в в map, потом вызвать mapDOM
 
     addWallEvent(mapDOM.getMapSelector())
-    addClearWallEvent(map.getMap())
-    addClearPathEvent(map.getMap())
+    addClearWallEvent()
+    addClearPathEvent()
+    addClearBoardEvent()
     registerAlgorithmsBtn(map.getMap())
 }
 

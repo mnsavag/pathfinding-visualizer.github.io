@@ -2,7 +2,7 @@ export function getGreatestMultiple(upperBound, divider) {
     return upperBound - upperBound % divider
 }
 
-export function getDOMElement(tag, id, className) {
+export function getDOMElement(tag, id, className) { // createDOMElement
     const domElem = document.createElement(tag)
     let idAttr = document.createAttribute("id")
     idAttr.value = id

@@ -1,3 +1,5 @@
+import { cellStates } from "/src/models/cellStates.js"
+
 export function animateCellSpawn (cellSelector) {
     const divAnimation = document.createElement("div")
     divAnimation.setAttribute("class", "div-animation") // поменять название
@@ -8,11 +10,10 @@ export function animateCellSpawn (cellSelector) {
 }
 
 export function animateCellPath(cellSelector) {
+    if (cellSelector.className === cellStates.START)
+        return
+
     const divAnimation = document.createElement("div")
     divAnimation.setAttribute("class", "path-animation")
-    while (cellSelector.firstChild) {
-        cellSelector.removeChild(cellSelector.firstChild);
-    }
     cellSelector.appendChild(divAnimation)
-
 }

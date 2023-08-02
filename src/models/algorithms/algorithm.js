@@ -37,12 +37,12 @@ export class Algorithm {
        
         let currNode = ancestors.find(anc => anc.currY === y && anc.currX === x) 
         while (currNode) {
+            path.push([y, x])
             y = currNode.prevY
             x = currNode.prevX
             currNode = ancestors.find(anc => anc.currY === y && anc.currX === x) 
-            path.push([y, x])
         }
-        path.pop()
+        
         while (path.length > 0) {
             const [y, x] = path.pop()
             animateCellPath(map[y][x])
