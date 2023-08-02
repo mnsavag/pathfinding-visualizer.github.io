@@ -24,7 +24,12 @@ export class MapDOM {
  
     resizeMapDOM() {
         // change later
-        this._mapSelector.style.height = this._getResizeSideInPX(document.documentElement.clientHeight - 50 - 80, this.xCnt)
+        const header = document.querySelector(".header")
+        const sectionTool = document.querySelector(".section")
+        const headerHeight = getComputedStyle(header).height.slice(0, -2) // можно в метод вынести
+        const sectionToolHeight = getComputedStyle(sectionTool).height.slice(0, -2)
+
+        this._mapSelector.style.height = this._getResizeSideInPX(document.documentElement.clientHeight - headerHeight - sectionToolHeight, this.xCnt)
         this._mapSelector.style.width = this._getResizeSideInPX(document.documentElement.clientWidth, this.yCnt)
     }
 

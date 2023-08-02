@@ -12,9 +12,6 @@ h1, h2, h3, h4, h5, h6{font-size: inherit;font-weight: inherit;}
     --clr-header: #274E7D;
     --clr-dark-hover: #130873;
     --clr-section: #d2ceed;
-
-    --size-section: 1120px;  /* кратно кол-ву элементвов */
-    --count-section-item: 7; /* всего 7 элементов  */
 }
 /*colors
     #0E53A7
@@ -29,12 +26,13 @@ body {
     font-size: 16px;
 
     min-height: 100vh;
+    min-width: 970px;
 }
 
 /* ======== Header ======== */
 .header {
     display: flex;
-    height: 50px;
+    min-height: 50px;
     color: white;
     background-color: var(--clr-header);
 
@@ -50,15 +48,32 @@ body {
 
 .menu {
     display: flex;
-    width: 100%;
-
+    max-width: 100%;
     align-items: center;
+}
+
+@media (max-width: 1199px) {
+    .header {
+        flex-wrap: wrap;
+        height: 100px;
+    }
+    .header__name {
+        margin: auto auto;
+    }
+    .menu {
+        justify-content: center;
+    }
+
+    .section__container {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
 }
 
 
 /*  1 и 2 вложенность   */
 .menu__btn {
-    height: 100%;
+    max-height: 100%;
     min-width: 110px;
 
     display: flex;
@@ -145,27 +160,23 @@ body {
 
 /* ======== Section ======== */
 .section {
-    height: 80px;
+    min-height: 80px;
     background-color: rgba(255, 255, 255);
+    display: flex;
+    align-items: center;
 }
 
 .section__container {
     display: flex;
-    justify-content: space-between;
-
     height: 100%;
-    max-width: var(--size-section);
     padding: 0px 50px;
 }
 
 .section__item{
-    margin: auto auto;
     display: flex;
-    align-items: center;
-
     height: 50%;
     border-radius: 5px;
-
+    padding: 20px;
     cursor: default;
 }
 
@@ -179,7 +190,6 @@ body {
 /*  Grid   */
 .grid {
     width: 100%;
-    height: calc(100vh - 50px - 80px);
     margin: 0 auto;
     border-collapse: collapse;
 }
