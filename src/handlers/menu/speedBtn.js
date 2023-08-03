@@ -1,5 +1,5 @@
 let tempSpeed
-const pathSpeed = 50
+const pathSpeed = 45
 const speed = {
     SLOW: 25,
     MEDIUM: 20,

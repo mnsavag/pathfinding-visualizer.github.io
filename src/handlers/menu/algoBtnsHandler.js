@@ -1,5 +1,6 @@
 import { Algorithm } from "/src/models/algorithms/algorithm.js"
 import { BFS } from "/src/models/algorithms/bfs.js"
+import { clearPath } from "/src/handlers/menu/clearButtonsHandlers.js"
 
 const visualiseBtn = document.getElementById("visualise")
 
@@ -24,6 +25,7 @@ function registerVisualiseBtn(map) {
     /* Visualise Button */
     const visualiseBtn = document.getElementById("visualise")
     visualiseBtn.addEventListener("click", () => {
+        clearPath()
         currAlgorithmState.search(map)
     })
     /* Visualise Button */

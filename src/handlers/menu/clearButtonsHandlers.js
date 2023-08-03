@@ -22,15 +22,7 @@ export function addClearBoardEvent(map, ...mapObjects) {
     })
 }
 
-
-function clearWall() {
-    const wallBlocks = document.querySelectorAll("." + cellStates.WALL)
-    wallBlocks.forEach(block => {
-        block.className = cellStates.UNVISITED
-    })
-}
-
-function clearPath() {
+export function clearPath() {
     let shortestPathBlocks = document.querySelectorAll(".path-animation")
     shortestPathBlocks.forEach(block => {
         block.remove()
@@ -43,6 +35,13 @@ function clearPath() {
 
     let visitedBlocks = document.querySelectorAll("." + cellStates.VISITED)
     visitedBlocks.forEach(block => {
+        block.className = cellStates.UNVISITED
+    })
+}
+
+function clearWall() {
+    const wallBlocks = document.querySelectorAll("." + cellStates.WALL)
+    wallBlocks.forEach(block => {
         block.className = cellStates.UNVISITED
     })
 }
