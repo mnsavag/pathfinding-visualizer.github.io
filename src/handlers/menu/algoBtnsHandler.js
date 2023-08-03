@@ -3,8 +3,8 @@ import { BFS } from "/src/models/algorithms/bfs.js"
 
 const visualiseBtn = document.getElementById("visualise")
 
-let currProgrammState
-const programmStates = Object.freeze({
+let currAlgorithmState
+const algorithmState = Object.freeze({
     BFS: BFS,
 })
 
@@ -15,7 +15,7 @@ function registerBFSBtn() {
     bfsBtn.addEventListener("click", () => {
     visualiseBtn.innerHTML = "Visualise BFS!"
     
-    currProgrammState = programmStates.BFS
+    currAlgorithmState = algorithmState.BFS
     })
     /* BFS Button */
 }
@@ -24,7 +24,7 @@ function registerVisualiseBtn(map) {
     /* Visualise Button */
     const visualiseBtn = document.getElementById("visualise")
     visualiseBtn.addEventListener("click", () => {
-        currProgrammState.search(map)
+        currAlgorithmState.search(map)
     })
     /* Visualise Button */
 }

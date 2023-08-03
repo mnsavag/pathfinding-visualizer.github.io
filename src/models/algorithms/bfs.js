@@ -2,6 +2,8 @@ import { cellStates } from "/src/models/cellStates.js"
 import { animateCellSpawn} from "/src/models/utils/animationCell.js"
 import { Algorithm } from "/src/models/algorithms/algorithm.js"
 import { sleep } from "/src/utility.js"
+import { getTempSpeed } from "/src/handlers/menu/speedBtn.js"
+
 
 export class BFS extends Algorithm {
     static async search(map) {
@@ -20,7 +22,7 @@ export class BFS extends Algorithm {
             
             animateCellSpawn(map[y][x])
             
-            await sleep(50)
+            await sleep(getTempSpeed())
             if (y === fY && x === fX) {
                 break
             }

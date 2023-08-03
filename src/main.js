@@ -6,6 +6,7 @@ import { preventSelection } from "./disableSelection.js"
 import { addClearPathEvent, addClearWallEvent, addClearBoardEvent } from "./handlers/menu/clearButtonsHandlers.js"
 import { registerAlgorithmsBtn } from "./handlers/menu/algoBtnsHandler.js"
 import { addDraggableEvent, addWallEvent } from "./handlers/mapDOMHandelrs.js"
+import { registerSpeedBtns } from "/src/handlers/menu/speedBtn.js"
 
 import { addMenuArrow } from "./interfaceScript.js"
 
@@ -36,7 +37,9 @@ function main() {
     addClearWallEvent()
     addClearPathEvent()
     addClearBoardEvent()
+
     registerAlgorithmsBtn(map.getMap())
+    registerSpeedBtns()
 }
 
 main()

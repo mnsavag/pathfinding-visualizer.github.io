@@ -1,6 +1,7 @@
 import { cellStates } from "/src/models/cellStates.js"
 import { animateCellSpawn, animateCellPath } from "/src/models/utils/animationCell.js"
 import { sleep } from "/src/utility.js"
+import { getTempSpeed, getPathSpeed } from "/src/handlers/menu/speedBtn.js"
 
 export class Algorithm {
     static search(map){}
@@ -46,7 +47,7 @@ export class Algorithm {
         while (path.length > 0) {
             const [y, x] = path.pop()
             animateCellPath(map[y][x])
-            await sleep(50)
+            await sleep(getPathSpeed())
         }
     }
 }
