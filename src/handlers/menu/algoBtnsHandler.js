@@ -1,6 +1,7 @@
 import { Algorithm } from "/src/models/algorithms/algorithm.js"
 import { BFS } from "/src/models/algorithms/bfs.js"
 import { clearPath } from "/src/handlers/menu/clearButtonsHandlers.js"
+import { onDisableInteraction, offDisableInteraction } from "/src/handlers/menu/disableInteraction.js"
 
 const visualiseBtn = document.getElementById("visualise")
 
@@ -24,9 +25,12 @@ function registerBFSBtn() {
 function registerVisualiseBtn(map) {
     /* Visualise Button */
     const visualiseBtn = document.getElementById("visualise")
-    visualiseBtn.addEventListener("click", () => {
+    visualiseBtn.addEventListener("click", async () => {
+        // add decorator
+        onDisableInteraction()
         clearPath()
-        currAlgorithmState.search(map)
+        await currAlgorithmState.search(map)
+        offDisableInteraction()
     })
     /* Visualise Button */
 }
