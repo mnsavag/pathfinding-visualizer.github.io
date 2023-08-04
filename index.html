@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=970, initial-scale=1.0">
+    <meta name="viewport" content="width=1060, initial-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="styles.css" />
     <title>Pathfinding Visualizer</title>
 </head>
@@ -18,7 +18,7 @@
                         <span class="menu_arrow arrow"></span>
                         <ul class="sub-menu__list">
                             <li class="sub-menu__option" id="BFS">BFS</li>
-                            <li class="sub-menu__option">Dijkstra</li>
+                            <li class="sub-menu__option" id="DFS">DFS</li>
                         </ul>
                     </li>
                 </ul>
@@ -46,8 +46,8 @@
 
             <div class="menu__btn">
                 <ul class="menu__list">
-                    <li class="menu__option">
-                        <a class="menu__link">Speed</a>
+                    <li class="menu__option menu__option_speed">
+                        <a class="menu__link" id="speed-btn">Speed</a>
                         <span class="menu_arrow arrow"></span>
                         <ul class="sub-menu__list">
                             <li class="sub-menu__option" id="speed-slow">Slow</li>

@@ -50,10 +50,11 @@ body {
     align-items: center;
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 1210px) {
     .header {
         flex-wrap: wrap;
         height: 100px;
+        justify-content: center;
     }
     .header__name {
         margin: auto auto;
@@ -67,8 +68,8 @@ body {
         flex-wrap: wrap;
     }
 }
-
-@media (max-width: 969px) {
+/*969*/
+@media (max-width: 1059px) {
     .header {
         height: 180px;
     }
@@ -127,6 +128,10 @@ body {
 .menu__option {
     position: relative;
     width: 100%;
+}
+
+.menu__option_speed {
+    min-width: 150px;
 }
 
 .sub-menu__list {
