@@ -4,7 +4,7 @@ import { cellStates } from "./models/cellStates.js"
 import { MapObject } from "./models/mapObject.js"
 import { preventSelection } from "./disableSelection.js"
 import { addClearPathEvent, addClearWallEvent, addClearBoardEvent } from "./handlers/menu/clearButtonsHandlers.js"
-import { registerAlgorithmsBtn } from "./handlers/menu/algoBtnsHandler.js"
+import { registerAlgorithmBtns } from "./handlers/menu/algoBtnsHandler.js"
 import { addDraggableEvent, addWallEvent } from "./handlers/mapDOMHandelrs.js"
 import { registerSpeedBtns } from "/src/handlers/menu/speedBtn.js"
 
@@ -38,7 +38,7 @@ function main() {
     addClearPathEvent()
     addClearBoardEvent()
 
-    registerAlgorithmsBtn(map.getMap())
+    registerAlgorithmBtns(map.getMap())
     registerSpeedBtns()
 }
 

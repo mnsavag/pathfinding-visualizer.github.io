@@ -17,11 +17,11 @@ export class Algorithm {
     }
     
     static getAdjacentAvailYX(map, visited, y, x, width, height) {
-        const dx = [1, -1, 0, 0]
-        const dy = [0, 0, 1, -1]
+        const dx = [0,   1, -1,  0]
+        const dy = [-1 , 0,  0, 1]
         let result = []
         for (let i = 0; i < dx.length; i++) {
-            const [newY, newX] = [y + dy[i], x + dx[i]]
+            const [newY, newX] = [y - dy[i], x - dx[i]]
 
             if (0 <= newX && newX < width && 
                 0 <= newY && newY < height &&

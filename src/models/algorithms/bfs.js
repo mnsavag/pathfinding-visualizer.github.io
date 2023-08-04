@@ -15,10 +15,10 @@ export class BFS extends Algorithm {
 
         let ancestors = []
 
-        let stack = [[sY, sX]]
+        let queue = [[sY, sX]]
         let visited = new Map()
-        while (stack.length > 0) {
-            const [y, x] = stack.shift()
+        while (queue.length > 0) {
+            const [y, x] = queue.shift()
             
             animateCellSpawn(map[y][x])
             
@@ -29,7 +29,7 @@ export class BFS extends Algorithm {
             else {
                 const adjacentYX = super.getAdjacentAvailYX(map, visited, y, x, width, height)
                 for (const pairYX of adjacentYX) {
-                    stack.push(pairYX)
+                    queue.push(pairYX)
                     map[pairYX[0]][pairYX[1]].className = cellStates.VISITED
                     visited.set(pairYX[0], pairYX[1])
 
