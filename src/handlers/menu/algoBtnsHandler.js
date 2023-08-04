@@ -1,6 +1,7 @@
 import { Algorithm } from "/src/models/algorithms/algorithm.js"
 import { BFS } from "/src/models/algorithms/bfs.js"
 import { DFS } from "/src/models/algorithms/dfs.js"
+import { Dijkstra } from "/src/models/algorithms/dijkstra.js"
 import { clearPath } from "/src/handlers/menu/clearButtonsHandlers.js"
 import { onDisableInteraction, offDisableInteraction } from "/src/handlers/menu/disableInteraction.js"
 
@@ -8,7 +9,8 @@ import { onDisableInteraction, offDisableInteraction } from "/src/handlers/menu/
 let currAlgorithm
 const algorithmState = Object.freeze({
     BFS: BFS,
-    DFS: DFS
+    DFS: DFS,
+    Dijkstra: Dijkstra
 })
 let algorithmsData = []
 const visualiseBtn = document.getElementById("visualise")
@@ -21,7 +23,8 @@ export function registerAlgorithmBtns(map) {
 
 function registerAlgorithms() {
     algorithmsData = [ { id: "BFS", name: "Visualise BFS!", method: algorithmState.BFS},
-                        { id: "DFS", name: "Visualise DFS!", method: algorithmState.DFS}
+                        { id: "DFS", name: "Visualise DFS!", method: algorithmState.DFS},
+                        {id: "Dijkstra", name: "Visualise Dijkstra!", method: algorithmState.Dijkstra}
                     ]
 
     algorithmsData.forEach(element => {

@@ -3,6 +3,11 @@ import { animateCellSpawn, animateCellPath } from "/src/models/utils/animationCe
 import { sleep } from "/src/utility.js"
 import { getTempSpeed, getPathSpeed } from "/src/handlers/menu/speedBtn.js"
 
+const notAvailObj = {
+    [cellStates.WALL]: true,
+    [cellStates.START]: true
+}
+
 export class Algorithm {
     static search(map){}
 
@@ -25,8 +30,7 @@ export class Algorithm {
 
             if (0 <= newX && newX < width && 
                 0 <= newY && newY < height &&
-                (map[newY][newX].className === cellStates.UNVISITED || map[newY][newX].className === cellStates.FINISH) &&
-                visited.get(newY) !== newX){
+                (!([newY, newX] in visited) && !(map[newY][newX].className in notAvailObj))){
                     result.push([newY, newX])
                 }
         }

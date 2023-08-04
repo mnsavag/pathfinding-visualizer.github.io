@@ -14,9 +14,8 @@ export class BFS extends Algorithm {
         const width = map[0].length
 
         let ancestors = []
-
+        let visited = {}
         let queue = [[sY, sX]]
-        let visited = new Map()
         while (queue.length > 0) {
             const [y, x] = queue.shift()
             
@@ -30,8 +29,8 @@ export class BFS extends Algorithm {
                 const adjacentYX = super.getAdjacentAvailYX(map, visited, y, x, width, height)
                 for (const pairYX of adjacentYX) {
                     queue.push(pairYX)
-                    map[pairYX[0]][pairYX[1]].className = cellStates.VISITED
-                    visited.set(pairYX[0], pairYX[1])
+                    visited[[pairYX[0], pairYX[1]]] = true
+                    
 
                     ancestors.push({
                         currY: pairYX[0],

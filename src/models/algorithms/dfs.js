@@ -14,9 +14,8 @@ export class DFS extends Algorithm {
         const width = map[0].length
 
         let ancestors = []
-
+        let visited = {}
         let stack = [[sY, sX]]
-        let visited = new Map()
         while (stack.length > 0) {
             const [y, x] = stack.pop()
             
@@ -30,8 +29,7 @@ export class DFS extends Algorithm {
                 const adjacentYX = super.getAdjacentAvailYX(map, visited, y, x, width, height)
                 for (const pairYX of adjacentYX) {
                     stack.push(pairYX)
-                    map[pairYX[0]][pairYX[1]].className = cellStates.VISITED
-                    visited.set(pairYX[0], pairYX[1])
+                    visited[[pairYX[0], pairYX[1]]] = true
 
                     ancestors.push({
                         currY: pairYX[0],
