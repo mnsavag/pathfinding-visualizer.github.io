@@ -1,43 +1,57 @@
 import { Algorithm } from "/src/models/algorithms/algorithm.js"
 import { BFS } from "/src/models/algorithms/bfs.js"
+import { DFS } from "/src/models/algorithms/dfs.js"
 import { clearPath } from "/src/handlers/menu/clearButtonsHandlers.js"
 import { onDisableInteraction, offDisableInteraction } from "/src/handlers/menu/disableInteraction.js"
 
-const visualiseBtn = document.getElementById("visualise")
 
-let currAlgorithmState
+let currAlgorithm
 const algorithmState = Object.freeze({
     BFS: BFS,
+    DFS: DFS
 })
+let algorithmsData = []
+const visualiseBtn = document.getElementById("visualise")
 
 
-function registerBFSBtn() {
-    /* BFS Button */
-    const bfsBtn = document.getElementById("BFS")
-    bfsBtn.addEventListener("click", () => {
-    visualiseBtn.innerHTML = "Visualise BFS!"
-    
-    currAlgorithmState = algorithmState.BFS
-    })
-    /* BFS Button */
+export function registerAlgorithmBtns(map) {
+    registerAlgorithms()
+    registerVisualiseBtn(map)
+}
+
+function registerAlgorithms() {
+    algorithmsData = [ { id: "BFS", name: "Visualise BFS!", method: algorithmState.BFS},
+                        { id: "DFS", name: "Visualise DFS!", method: algorithmState.DFS}
+                    ]
+
+    algorithmsData.forEach(element => {
+        const btn = document.getElementById(element.id)
+        btn.addEventListener("click", () => {
+            currAlgorithm = element.method
+            visualiseBtn.innerHTML = element.name
+        })
+    });
 }
 
 function registerVisualiseBtn(map) {
-    /* Visualise Button */
-    const visualiseBtn = document.getElementById("visualise")
     visualiseBtn.addEventListener("click", async () => {
         // add decorator
-        onDisableInteraction()
-        clearPath()
-        await currAlgorithmState.search(map)
-        offDisableInteraction()
+        if (hasAlgorithm()) {
+            onDisableInteraction()
+            clearPath()
+            await currAlgorithm.search(map)
+            offDisableInteraction()
+        }
     })
-    /* Visualise Button */
+}
+
+function hasAlgorithm() {
+    return algorithmsData.find(obj => {
+        if (obj.name === visualiseBtn.innerHTML) {
+            return true
+        }
+    })
 }
 
 
-export function registerAlgorithmsBtn(map) {
-    /* General Button */
-    registerBFSBtn()
-    registerVisualiseBtn(map)
-}
+
