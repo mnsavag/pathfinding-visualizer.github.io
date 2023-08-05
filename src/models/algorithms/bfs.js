@@ -15,6 +15,7 @@ export class BFS extends Algorithm {
 
         let ancestors = []
         let visited = {}
+        visited[[sY, sX]] = true
         let queue = [[sY, sX]]
         while (queue.length > 0) {
             const [y, x] = queue.shift()

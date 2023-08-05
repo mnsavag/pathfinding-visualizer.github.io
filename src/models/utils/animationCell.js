@@ -8,7 +8,7 @@ export function animateCellSpawn (cellSelector) {
         cellSelector.className = cellStates.VISITED
     }
 
-    if (!cellSelector.hasChildNodes()) {
+    if (!cellSelector.classList.contains(cellStates.START) && !cellSelector.classList.contains(cellStates.FINISH)) {
         cellSelector.appendChild(divAnimation)
     }
 }

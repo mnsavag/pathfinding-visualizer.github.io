@@ -15,6 +15,7 @@ export class DFS extends Algorithm {
 
         let ancestors = []
         let visited = {}
+        visited[[sY, sX]] = true
         let stack = [[sY, sX]]
         while (stack.length > 0) {
             const [y, x] = stack.pop()

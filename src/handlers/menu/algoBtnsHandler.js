@@ -4,13 +4,15 @@ import { DFS } from "/src/models/algorithms/dfs.js"
 import { Dijkstra } from "/src/models/algorithms/dijkstra.js"
 import { clearPath } from "/src/handlers/menu/clearButtonsHandlers.js"
 import { onDisableInteraction, offDisableInteraction } from "/src/handlers/menu/disableInteraction.js"
+import { BidirectBFS } from "/src/models/algorithms/bidirectBFS.js"
 
 
 let currAlgorithm
 const algorithmState = Object.freeze({
     BFS: BFS,
     DFS: DFS,
-    Dijkstra: Dijkstra
+    Dijkstra: Dijkstra,
+    BidirectBFS: BidirectBFS
 })
 let algorithmsData = []
 const visualiseBtn = document.getElementById("visualise")
@@ -24,7 +26,8 @@ export function registerAlgorithmBtns(map) {
 function registerAlgorithms() {
     algorithmsData = [ { id: "BFS", name: "Visualise BFS!", method: algorithmState.BFS},
                         { id: "DFS", name: "Visualise DFS!", method: algorithmState.DFS},
-                        {id: "Dijkstra", name: "Visualise Dijkstra!", method: algorithmState.Dijkstra}
+                        {id: "Dijkstra", name: "Visualise Dijkstra!", method: algorithmState.Dijkstra},
+                        {id: "Bidirectional", name: "Visualise Bidirect!", method: algorithmState.BidirectBFS}
                     ]
 
     algorithmsData.forEach(element => {
