@@ -41,7 +41,7 @@ export class Heap {
         this._heap.pop()
         return ans
     }
-
+    
     getLength() {
         return this._heap.length
     }

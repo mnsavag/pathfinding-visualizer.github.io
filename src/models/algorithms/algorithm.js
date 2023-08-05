@@ -22,8 +22,8 @@ export class Algorithm {
     }
     
     static getAdjacentAvailYX(map, visited, y, x, width, height) {
-        const dx = [0,   1, -1,  0]
-        const dy = [-1 , 0,  0, 1]
+        let dx = [0,   1, -1,  0]
+        let dy = [-1 , 0,  0, 1]
         let result = []
         for (let i = 0; i < dx.length; i++) {
             const [newY, newX] = [y - dy[i], x - dx[i]]
