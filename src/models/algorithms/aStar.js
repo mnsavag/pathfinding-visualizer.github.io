@@ -13,7 +13,7 @@ export class AStar extends Algorithm {
         const height = map.length
         const width = map[0].length
 
-        let ancestors = []
+        let ancestors = {}
         let dist = {}
         let minHeap = new Heap()
 
@@ -33,26 +33,13 @@ export class AStar extends Algorithm {
             for (const pairYX of adjacentYX) {
                 if (!(pairYX in dist) || dist[[y, x]] + 1 < dist[pairYX]) {
                     dist[pairYX] = dist[[y, x]] + 1
-
-                    let obj = ancestors.find(anc => anc.currY === pairYX[0] && anc.currX === pairYX[1])
-                    if (!obj) {
-                        ancestors.push({
-                            currY: pairYX[0],
-                            currX: pairYX[1],
-                            prevY: y,
-                            prevX: x
-                        })
-                    }
-                    else {
-                        obj.prevY = y
-                        obj.prevX = x 
-                    } // изменить по массиву 100%
                     const newEstimate = dist[pairYX] + getHeuristic(...pairYX, fY, fX)
                     minHeap.insert([-newEstimate, ...pairYX])
+                    
+                    ancestors[pairYX] = [y, x]
                 }
             }
         }
-
         map[fY][fX].className = cellStates.FINISH // пофиксить
         map[sY][sX].className = cellStates.START
         await super.animatePath(map, ancestors, fY, fX)

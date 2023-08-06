@@ -25,14 +25,17 @@ export class BidirectBFS extends Algorithm {
         const dy = [-1 , 0,  0, 1]
 
         let colorMap = getColorMap(width, height)
-        let ancestors = []
+        let ancestors = {}
+
         let queue = [[sY, sX, colors.ONE], [fY, fX, colors.TWO]]
         colorMap[sY][sX] = colors.ONE
         colorMap[fY][fX] = colors.TWO
 
-        let intersectionFirst
-        let intersectionSecond
+        let intersectionNode
+        let intersectionNext
         let isNodeFound = false
+        let lastY
+        let lastX
         while (queue.length > 0) {
             let [y, x, color] = queue.shift()
             
@@ -53,47 +56,34 @@ export class BidirectBFS extends Algorithm {
                             queue.push([newY, newX, color])
                         }
                         else if (colorMap[newY][newX] !== color) {
-                            colorMap[newY][newX] = color
                             isNodeFound = true
                             animateCellSpawn(map[newY][newX])
                             await sleep(getTempSpeed() - 10)
+                            
 
-                            intersectionFirst = [newY, newX]
-                            ancestors.push({
-                                currY: newY,
-                                currX: newX,
-                                prevY: y,
-                                prevX: x
-                            })
-                            console.log(intersectionFirst)
-                            intersectionSecond = getAdjencentOtherColor(newY, newX, color, colorMap, width, height, map)
-                            console.log(intersectionSecond)
-                            ancestors.push({
-                                currY: intersectionSecond[0],
-                                currX: intersectionSecond[1],
-                                prevY: newY,
-                                prevX: newX
-                            })
+                            colorMap[newY][newX] = color
+                            intersectionNode = [newY, newX]
+                            lastY = y
+                            lastX = x
+
+                            intersectionNext = getAdjencentOtherColor(newY, newX, color, colorMap, width, height, map)
                             break
                         }
-                        ancestors.push({
-                            currY: newY,
-                            currX: newX,
-                            prevY: y,
-                            prevX: x
-                        })
+                        ancestors[[newY, newX]] = [y, x]
                     }
                 }
-            if (isNodeFound) {
-                break
-            }
+                if (isNodeFound) {
+                    break
+                }
         }
         
         map[fY][fX].className = cellStates.FINISH // пофиксить
         map[sY][sX].className = cellStates.START
-        if (intersectionFirst) {
-            await super.animatePath(map, ancestors, intersectionFirst[0], intersectionFirst[1])
-            await super.animatePath(map, ancestors, intersectionSecond[0], intersectionSecond[1])
+        if (intersectionNode) {
+            ancestors[intersectionNode] = [lastY, lastX]
+            super.animatePath(map, ancestors, intersectionNode[0], intersectionNode[1])
+            ancestors[intersectionNode] = intersectionNext
+            await super.animatePath(map, ancestors, intersectionNode[0], intersectionNode[1])
         }
     }
 }
@@ -120,7 +110,7 @@ function getAdjencentOtherColor(y, x, color, colorMap, width, height, map) {
         if (0 <= newX && newX < width && 
             0 <= newY && newY < height &&
             !(map[newY][newX].className in notAvailObj)) {
-                if (colorMap[newY][newX] !== colors.ZERO && colorMap[newY][newX] === color) {
+                if (colorMap[newY][newX] !== colors.ZERO && colorMap[newY][newX] !== color) {
                     return [newY, newX]
             }
         }

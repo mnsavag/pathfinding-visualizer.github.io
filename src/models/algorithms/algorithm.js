@@ -39,12 +39,13 @@ export class Algorithm {
 
     static async animatePath(map, ancestors, y, x) {
         let path = []
-        let currNode = ancestors.find(anc => anc.currY === y && anc.currX === x)
-        while (currNode) {
+
+        while ([y, x] in ancestors) {
             path.push([y, x])
-            y = currNode.prevY
-            x = currNode.prevX
-            currNode = ancestors.find(anc => anc.currY === y && anc.currX === x) 
+            let tempY = y
+            y = ancestors[[y, x]][0]
+            x = ancestors[[tempY, x]][1]
+            console.log([y, x])
         }
 
         while (path.length > 0) {

@@ -14,8 +14,8 @@ export class Dijkstra extends Algorithm {
         const height = map.length
         const width = map[0].length
 
-        let ancestors = []
-        let visited = []
+        let ancestors = {}
+        let visited = {}
 
         let minHeap = new Heap()
         minHeap.insert([0, sY, sX])
@@ -34,12 +34,7 @@ export class Dijkstra extends Algorithm {
                 visited[[newY, newX]] = true
                 minHeap.insert([-(cost + 1), newY, newX])
                 
-                ancestors.push({
-                    currY: newY,
-                    currX: newX,
-                    prevY: y,
-                    prevX: x
-                })
+                ancestors[pairYX] = [y, x]
             }
             animateCellSpawn(map[y][x])
             await sleep(getTempSpeed())

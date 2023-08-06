@@ -13,7 +13,7 @@ export class DFS extends Algorithm {
         const height = map.length
         const width = map[0].length
 
-        let ancestors = []
+        let ancestors = {}
         let visited = {}
         visited[[sY, sX]] = true
         let stack = [[sY, sX]]
@@ -32,12 +32,7 @@ export class DFS extends Algorithm {
                     stack.push(pairYX)
                     visited[[pairYX[0], pairYX[1]]] = true
 
-                    ancestors.push({
-                        currY: pairYX[0],
-                        currX: pairYX[1],
-                        prevY: y,
-                        prevX: x
-                    })
+                    ancestors[pairYX] = [y, x]
                 }
             }  
         }
