@@ -1,5 +1,4 @@
 import { cellStates } from "/src/models/cellStates.js"
-import { animateCellSpawn, animateCellPath } from "/src/models/utils/animationCell.js"
 import { sleep } from "/src/utility.js"
 import { getTempSpeed, getPathSpeed } from "/src/handlers/menu/speedBtn.js"
 
@@ -14,7 +13,7 @@ export class Algorithm {
     static getCellByState(state, map) {
         for (let i = 0; i < map.length; i++) {
             for (let j = 0; j < map[i].length; j++) {
-                if (map[i][j].className == state) {
+                if (map[i][j].DOM.className == state) {
                     return [i, j]
                 }
             }
@@ -30,7 +29,7 @@ export class Algorithm {
 
             if (0 <= newX && newX < width && 
                 0 <= newY && newY < height &&
-                (!([newY, newX] in visited) && !(map[newY][newX].className in notAvailObj))){
+                (!([newY, newX] in visited) && !(map[newY][newX].DOM.className in notAvailObj))){
                     result.push([newY, newX])
                 }
         }
@@ -45,12 +44,11 @@ export class Algorithm {
             let tempY = y
             y = ancestors[[y, x]][0]
             x = ancestors[[tempY, x]][1]
-            console.log([y, x])
         }
 
         while (path.length > 0) {
             const [y, x] = path.pop()
-            animateCellPath(map[y][x])
+            map[y][x].animateCellPath()
             await sleep(getPathSpeed())
         }
     }

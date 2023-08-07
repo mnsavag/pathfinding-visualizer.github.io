@@ -1,5 +1,4 @@
 import { cellStates } from "/src/models/cellStates.js"
-import { animateCellSpawn} from "/src/models/utils/animationCell.js"
 import { Algorithm } from "/src/models/algorithms/algorithm.js"
 import { sleep } from "/src/utility.js"
 import { getTempSpeed } from "/src/handlers/menu/speedBtn.js"
@@ -39,7 +38,7 @@ export class BidirectBFS extends Algorithm {
         while (queue.length > 0) {
             let [y, x, color] = queue.shift()
             
-            animateCellSpawn(map[y][x])
+            map[y][x].animateCellSpawn()
             await sleep(getTempSpeed() - 10)
             
             for (let i = 0; i < dx.length; i++) {
@@ -47,7 +46,7 @@ export class BidirectBFS extends Algorithm {
     
                 if (0 <= newX && newX < width && 
                     0 <= newY && newY < height &&
-                    !(map[newY][newX].className in notAvailObj)) {
+                    !(map[newY][newX].DOM.className in notAvailObj)) {
                         if (colorMap[newY][newX] === color) {
                             continue
                         }
@@ -57,7 +56,7 @@ export class BidirectBFS extends Algorithm {
                         }
                         else if (colorMap[newY][newX] !== color) {
                             isNodeFound = true
-                            animateCellSpawn(map[newY][newX])
+                            map[newY][newX].animateCellSpawn()
                             await sleep(getTempSpeed() - 10)
                             
 
@@ -77,8 +76,8 @@ export class BidirectBFS extends Algorithm {
                 }
         }
         
-        map[fY][fX].className = cellStates.FINISH // пофиксить
-        map[sY][sX].className = cellStates.START
+        map[fY][fX].DOM.className = cellStates.FINISH // пофиксить
+        map[sY][sX].DOM.className = cellStates.START
         if (intersectionNode) {
             ancestors[intersectionNode] = [lastY, lastX]
             super.animatePath(map, ancestors, intersectionNode[0], intersectionNode[1])
@@ -109,7 +108,7 @@ function getAdjencentOtherColor(y, x, color, colorMap, width, height, map) {
 
         if (0 <= newX && newX < width && 
             0 <= newY && newY < height &&
-            !(map[newY][newX].className in notAvailObj)) {
+            !(map[newY][newX].DOM.className in notAvailObj)) {
                 if (colorMap[newY][newX] !== colors.ZERO && colorMap[newY][newX] !== color) {
                     return [newY, newX]
             }

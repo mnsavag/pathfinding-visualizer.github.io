@@ -1,5 +1,7 @@
-import { MapDOM} from "./models/mapDOM.js"
 import { Map } from "./models/map.js"
+import { MapDOM } from "./DOMEntities/mapDom.js"
+import { registerAnimateEvents } from "./DOMEntities/cellDOM.js"
+
 import { cellStates } from "./models/cellStates.js"
 import { MapObject } from "./models/mapObject.js"
 import { preventSelection } from "./disableSelection.js"
@@ -20,17 +22,21 @@ const yCellCnt = 26
 function main() {
     addMenuArrow()
 
-    const mapDOM = new MapDOM(document.querySelector(".grid"), xCellCnt, yCellCnt)
-    mapDOM.createMapDOM()
-    window.addEventListener("resize", () => requestAnimationFrame(mapDOM.resizeMapDOM.bind(mapDOM)))
+    const map = new Map(xCellCnt, yCellCnt)
+    const mapDOM = new MapDOM()
+    mapDOM.createMapDOM(map.getMap())
+
+    window.addEventListener("resize", () => requestAnimationFrame(mapDOM.resizeMapDOM.bind(mapDOM))) // add to DOM Handlers
     
     preventSelection(mapDOM.getMapSelector())
     
-    const map = new Map(mapDOM.getMapSelector())
+    //const map = new Map(mapDOM.getMapSelector())
+    mapDOM.addMapObjectEventListener()
     const player = new MapObject(cellStates.START, "../img/node-start.png")
     map.addObject(15, 12, player)
     const finish = new MapObject(cellStates.FINISH, "../img/node-finish.png")
     map.addObject(6, 46, finish)
+
     addDraggableEvent(mapDOM.getMapSelector()) // проблема в том что все элементы нужно сналача зарегистрировать в в map, потом вызвать mapDOM
 
     addWallEvent(mapDOM.getMapSelector())
@@ -38,6 +44,7 @@ function main() {
     addClearPathEvent()
     addClearBoardEvent()
 
+    registerAnimateEvents(map.getMap())
     registerAlgorithmBtns(map.getMap())
     registerSpeedBtns()
 }

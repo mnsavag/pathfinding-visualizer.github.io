@@ -1,17 +1,20 @@
 import { getDOMElement, getGreatestMultiple } from "../utility.js"
 import { cellStates } from "/src/models/cellStates.js"
+import { Cell } from "./cell.js"
 
-/* Интерфейс для работы с тегом table (DOM) */
 export class Map {
-    constructor(mapSelector) {
+    constructor(xCnt, yCnt) {
         this._map = []
-        this._initArrayMap(mapSelector)
+        this.xCnt = xCnt
+        this.yCnt = yCnt
+        this._initMap()
     }
-
-    _initArrayMap(mapSelector) {
-        for (const rowMapView of mapSelector.childNodes) {
+    
+    _initMap() {
+        for (let y = 0; y < this.yCnt; y++) {
             const row = []
-            for (const cell of rowMapView.childNodes) {
+            for (let x = 0; x < this.xCnt; x++) {
+                const cell = new Cell(y, x, cellStates.UNVISITED) 
                 row.push(cell)
             }
             this._map.push(row)
@@ -19,8 +22,9 @@ export class Map {
     }
     
     addObject(y, x, mapObj) {
-        this._map[y][x].className = mapObj.cellClass
-        this._map[y][x].appendChild(mapObj.getDOMView())
+        let addEvent = new Event("addObject") // сделать в enum
+        addEvent["mapObject"] = mapObj
+        this._map[y][x].DOM.dispatchEvent(addEvent)
     }
 
     getMap() {

@@ -1,5 +1,4 @@
 import { cellStates } from "/src/models/cellStates.js"
-import { animateCellSpawn} from "/src/models/utils/animationCell.js"
 import { Algorithm } from "/src/models/algorithms/algorithm.js"
 import { sleep } from "/src/utility.js"
 import { getTempSpeed } from "/src/handlers/menu/speedBtn.js"
@@ -26,7 +25,7 @@ export class AStar extends Algorithm {
             if (y === fY && x === fX) {
                 break
             }
-            animateCellSpawn(map[y][x])
+            map[y][x].animateCellSpawn()
             await sleep(getTempSpeed())
 
             const adjacentYX = super.getAdjacentAvailYX(map, [], y, x, width, height)
@@ -40,8 +39,8 @@ export class AStar extends Algorithm {
                 }
             }
         }
-        map[fY][fX].className = cellStates.FINISH // пофиксить
-        map[sY][sX].className = cellStates.START
+        map[fY][fX].DOM.className = cellStates.FINISH // пофиксить
+        map[sY][sX].DOM.className = cellStates.START
         await super.animatePath(map, ancestors, fY, fX)
     }
 }

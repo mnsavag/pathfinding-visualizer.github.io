@@ -1,5 +1,4 @@
 import { cellStates } from "/src/models/cellStates.js"
-import { animateCellSpawn} from "/src/models/utils/animationCell.js"
 import { Algorithm } from "/src/models/algorithms/algorithm.js"
 import { sleep } from "/src/utility.js"
 import { getTempSpeed } from "/src/handlers/menu/speedBtn.js"
@@ -36,12 +35,12 @@ export class Dijkstra extends Algorithm {
                 
                 ancestors[pairYX] = [y, x]
             }
-            animateCellSpawn(map[y][x])
+            map[y][x].animateCellSpawn()
             await sleep(getTempSpeed())
         }
 
-        map[fY][fX].className = cellStates.FINISH // пофиксить
-        map[sY][sX].className = cellStates.START
+        map[fY][fX].DOM.className = cellStates.FINISH // пофиксить
+        map[sY][sX].DOM.className = cellStates.START
         await super.animatePath(map, ancestors, fY, fX)
     }
 }
