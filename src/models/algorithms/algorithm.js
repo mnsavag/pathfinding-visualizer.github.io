@@ -1,6 +1,6 @@
 import { cellStates } from "/src/models/cellStates.js"
-import { sleep } from "/src/utility.js"
-import { getTempSpeed, getPathSpeed } from "/src/handlers/menu/speedBtn.js"
+import { sleep } from "/src/miscellaneous/utility.js"
+import { getTempSpeed, getPathSpeed } from "/src/models/menu/speedBtn.js"
 
 const notAvailObj = {
     [cellStates.WALL]: true,
@@ -8,7 +8,14 @@ const notAvailObj = {
 }
 
 export class Algorithm {
-    static search(map){}
+    static async search(algorithmFunction, map) {
+        let [sY, sX] = this.getCellByState(cellStates.START, map)
+        let [fY, fX] = this.getCellByState(cellStates.FINISH, map)
+        const height = map.length
+        const width = map[0].length
+
+        await algorithmFunction(map, sY, sX, fY, fX, height, width);
+    }
 
     static getCellByState(state, map) {
         for (let i = 0; i < map.length; i++) {

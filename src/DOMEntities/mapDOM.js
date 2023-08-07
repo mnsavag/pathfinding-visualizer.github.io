@@ -1,9 +1,8 @@
-import { getDOMElement, getGreatestMultiple } from "/src/utility.js"
+import { getDOMElement, getGreatestMultiple } from "/src/miscellaneous/utility.js"
 import { cellStates } from "/src/models/cellStates.js"
 import { createCellTag } from "./cellDOM.js"
 
 
-/* Класс на основе таблицы */
 export class MapDOM {
     constructor() {
         this._mapSelector

@@ -1,4 +1,3 @@
-import { getDOMElement, getGreatestMultiple } from "../utility.js"
 import { cellStates } from "/src/models/cellStates.js"
 import { Cell } from "./cell.js"
 

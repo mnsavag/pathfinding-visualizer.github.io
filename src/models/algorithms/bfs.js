@@ -1,17 +1,12 @@
 import { cellStates } from "/src/models/cellStates.js"
 
 import { Algorithm } from "/src/models/algorithms/algorithm.js"
-import { sleep } from "/src/utility.js"
-import { getTempSpeed } from "/src/handlers/menu/speedBtn.js"
+import { sleep } from "/src/miscellaneous/utility.js"
+import { getTempSpeed } from "/src/models/menu/speedBtn.js"
 
 
 export class BFS extends Algorithm {
-    static async search(map) {
-        const [sY, sX] = super.getCellByState(cellStates.START, map)
-        const [fY, fX] = super.getCellByState(cellStates.FINISH, map)
-
-        const height = map.length
-        const width = map[0].length
+    static async search(map, sY, sX, fY, fX, height, width) {
 
         let ancestors = {}
         let visited = {}
@@ -20,7 +15,6 @@ export class BFS extends Algorithm {
         while (queue.length > 0) {
             const [y, x] = queue.shift()
             
-            //animateCellSpawn(map[y][x].DOM)
             map[y][x].animateCellSpawn()
             
             await sleep(getTempSpeed())
@@ -37,9 +31,6 @@ export class BFS extends Algorithm {
                 }
             }  
         }
-        
-        map[fY][fX].DOM.className = cellStates.FINISH // пофиксить
-        map[sY][sX].DOM.className = cellStates.START
         await super.animatePath(map, ancestors, fY, fX)
     }
 }

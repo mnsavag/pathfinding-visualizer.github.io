@@ -1,18 +1,12 @@
 import { cellStates } from "/src/models/cellStates.js"
 import { Algorithm } from "/src/models/algorithms/algorithm.js"
-import { sleep } from "/src/utility.js"
-import { getTempSpeed } from "/src/handlers/menu/speedBtn.js"
+import { sleep } from "/src/miscellaneous/utility.js"
+import { getTempSpeed } from "/src/models/menu/speedBtn.js"
 import { Heap } from "/src/models/algorithms/heap.js"
 
 
 export class Dijkstra extends Algorithm {
-    static async search(map) {
-        const [sY, sX] = super.getCellByState(cellStates.START, map)
-        const [fY, fX] = super.getCellByState(cellStates.FINISH, map)
-
-        const height = map.length
-        const width = map[0].length
-
+    static async search(map, sY, sX, fY, fX, height, width) {
         let ancestors = {}
         let visited = {}
 
@@ -28,8 +22,7 @@ export class Dijkstra extends Algorithm {
             
             const adjacentYX = super.getAdjacentAvailYX(map, visited, y, x, width, height)
             for (const pairYX of adjacentYX) {
-                let newY = pairYX[0]
-                let newX = pairYX[1]
+                let [newY, newX] = [...pairYX]
                 visited[[newY, newX]] = true
                 minHeap.insert([-(cost + 1), newY, newX])
                 
@@ -38,9 +31,6 @@ export class Dijkstra extends Algorithm {
             map[y][x].animateCellSpawn()
             await sleep(getTempSpeed())
         }
-
-        map[fY][fX].DOM.className = cellStates.FINISH // пофиксить
-        map[sY][sX].DOM.className = cellStates.START
         await super.animatePath(map, ancestors, fY, fX)
     }
 }

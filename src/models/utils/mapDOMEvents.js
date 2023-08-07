@@ -12,7 +12,7 @@ export function addDraggableEvent(mapSelector) {
                         cell: node, 
                         cellStateName: node.className,
                         obj: draggable
-                    }) // переделать потом как-нибудь, что в клетке мог быть только 1
+                    })
             }
         }
     }

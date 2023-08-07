@@ -1,5 +1,3 @@
-// in other folder later
-
 export function onDisableInteraction() {
     const block = document.createElement("div")
     block.id = "blocking-block"

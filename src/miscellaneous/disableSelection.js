@@ -23,7 +23,7 @@ export function preventSelection(element){
         return;
   
       var key = event.keyCode || event.which;
-      if (event.ctrlKey && key == 'A'.charCodeAt(0))  // 'A'.charCodeAt(0) можно заменить на 65
+      if (event.ctrlKey && key == 'A'.charCodeAt(0))  // 'A'.charCodeAt(0)
       {
         removeSelection();
   
@@ -61,3 +61,4 @@ export function preventSelection(element){
     addHandler(element, 'keydown', killCtrlA);
     addHandler(element, 'keyup', killCtrlA);
   }
+  

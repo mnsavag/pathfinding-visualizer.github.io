@@ -1,17 +1,12 @@
 import { cellStates } from "/src/models/cellStates.js"
 import { Algorithm } from "/src/models/algorithms/algorithm.js"
-import { sleep } from "/src/utility.js"
-import { getTempSpeed } from "/src/handlers/menu/speedBtn.js"
+import { sleep } from "/src/miscellaneous/utility.js"
+import { getTempSpeed } from "/src/models/menu/speedBtn.js"
 import { Heap } from "/src/models/algorithms/heap.js"
 
 
 export class AStar extends Algorithm {
-    static async search(map) {
-        const [sY, sX] = super.getCellByState(cellStates.START, map)
-        const [fY, fX] = super.getCellByState(cellStates.FINISH, map)
-        const height = map.length
-        const width = map[0].length
-
+    static async search(map, sY, sX, fY, fX, height, width) {
         let ancestors = {}
         let dist = {}
         let minHeap = new Heap()
@@ -21,10 +16,10 @@ export class AStar extends Algorithm {
         while (minHeap.getLength() > 0) {
             let [cost, y, x] = minHeap.extract()
             cost = -cost
-
             if (y === fY && x === fX) {
                 break
             }
+
             map[y][x].animateCellSpawn()
             await sleep(getTempSpeed())
 
@@ -39,12 +34,9 @@ export class AStar extends Algorithm {
                 }
             }
         }
-        map[fY][fX].DOM.className = cellStates.FINISH // пофиксить
-        map[sY][sX].DOM.className = cellStates.START
         await super.animatePath(map, ancestors, fY, fX)
     }
 }
-
 
 function getHeuristic(sY, sX, fY, fX) {
     return Math.abs(sY - fY) + Math.abs(sX - fX)

@@ -2,8 +2,8 @@ import { Algorithm } from "/src/models/algorithms/algorithm.js"
 import { BFS } from "/src/models/algorithms/bfs.js"
 import { DFS } from "/src/models/algorithms/dfs.js"
 import { Dijkstra } from "/src/models/algorithms/dijkstra.js"
-import { clearPath } from "/src/handlers/menu/clearButtonsHandlers.js"
-import { onDisableInteraction, offDisableInteraction } from "/src/handlers/menu/disableInteraction.js"
+import { clearPath } from "/src/models/menu/clearBtns.js"
+import { onDisableInteraction, offDisableInteraction } from "/src/miscellaneous/disableInteraction.js"
 import { BidirectBFS } from "/src/models/algorithms/bidirectBFS.js"
 import { AStar } from "/src/models/algorithms/aStar.js"
 
@@ -44,11 +44,10 @@ function registerAlgorithms() {
 
 function registerVisualiseBtn(map) {
     visualiseBtn.addEventListener("click", async () => {
-        // add decorator
         if (hasAlgorithm()) {
-            onDisableInteraction()
             clearPath()
-            await currAlgorithm.search(map)
+            onDisableInteraction()
+            await Algorithm.search(currAlgorithm.search, map)
             offDisableInteraction()
         }
     })
@@ -61,6 +60,3 @@ function hasAlgorithm() {
         }
     })
 }
-
-
-

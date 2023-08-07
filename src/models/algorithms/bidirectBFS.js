@@ -1,7 +1,7 @@
 import { cellStates } from "/src/models/cellStates.js"
 import { Algorithm } from "/src/models/algorithms/algorithm.js"
-import { sleep } from "/src/utility.js"
-import { getTempSpeed } from "/src/handlers/menu/speedBtn.js"
+import { sleep } from "/src/miscellaneous/utility.js"
+import { getTempSpeed } from "/src/models/menu/speedBtn.js"
 
 const notAvailObj = {
     [cellStates.WALL]: true,
@@ -15,11 +15,7 @@ const colors = {
 }
 
 export class BidirectBFS extends Algorithm {
-    static async search(map) {
-        const [sY, sX] = super.getCellByState(cellStates.START, map)
-        const [fY, fX] = super.getCellByState(cellStates.FINISH, map)
-        const height = map.length
-        const width = map[0].length
+    static async search(map, sY, sX, fY, fX, height, width) {
         const dx = [0,   1, -1,  0]
         const dy = [-1 , 0,  0, 1]
 
@@ -76,8 +72,6 @@ export class BidirectBFS extends Algorithm {
                 }
         }
         
-        map[fY][fX].DOM.className = cellStates.FINISH // пофиксить
-        map[sY][sX].DOM.className = cellStates.START
         if (intersectionNode) {
             ancestors[intersectionNode] = [lastY, lastX]
             super.animatePath(map, ancestors, intersectionNode[0], intersectionNode[1])

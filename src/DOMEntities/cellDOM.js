@@ -25,7 +25,8 @@ function animateCellSpawn (event) {
     const divAnimation = document.createElement("div")
     divAnimation.setAttribute("class", "div-animation") // поменять название
     
-    if (cellSelector.className === cellStates.UNVISITED) { // вынести в отдельную функцию для понятного чтения кода
+    if (cellSelector.className === cellStates.UNVISITED) { // вынести в отдельную функцию для понятного чтения кода и правильной смены классов
+        // mapObject класс не может быть убран
         cellSelector.className = cellStates.VISITED
     }
 
