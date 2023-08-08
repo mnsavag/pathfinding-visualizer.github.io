@@ -1,17 +1,17 @@
 import { cellStates } from "./models/cellStates.js"
 
-import { Map } from "/src/models/map.js"
-import { MapDOM } from "/src/DOMEntities/mapDom.js"
-import { MapObject } from "/src/models/mapObject.js"
+import { Map } from "./models/map.js"
+import { MapDOM } from "./DOMEntities/mapDom.js"
+import { MapObject } from "./models/mapObject.js"
 
-import { registerClearBtnsEvent } from "/src/models/menu/clearBtns.js"
-import { registerAlgorithmBtns } from "/src/models/menu/algorithmBtns.js"
-import { registerSpeedBtns } from "/src/models/menu/speedBtn.js"
-import { registerMapDOMHandlersEvent } from "/src/DOMEntities/handlers/mapDOMEvents.js"
-import { registerAnimateEvents } from "/src/DOMEntities/cellDOM.js"
+import { registerClearBtnsEvent } from "./models/menu/clearBtns.js"
+import { registerAlgorithmBtns } from "./models/menu/algorithmBtns.js"
+import { registerSpeedBtns } from "./models/menu/speedBtn.js"
+import { registerMapDOMHandlersEvent } from "./DOMEntities/handlers/mapDOMEvents.js"
+import { registerAnimateEvents } from "./DOMEntities/cellDOM.js"
 
-import { preventSelection } from "/src/miscellaneous/disableSelection.js"
-import { addMenuArrow } from "/src/miscellaneous/interfaceScript.js"
+import { preventSelection } from "./miscellaneous/disableSelection.js"
+import { addMenuArrow } from "./miscellaneous/interfaceScript.js"
 
 const xCellCnt = 68
 const yCellCnt = 26
