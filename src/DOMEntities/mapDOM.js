@@ -1,5 +1,5 @@
 import { getGreatestMultiple, getSelectorHeight } from "./miscellaneous/utility.js"
-import { createCellTag } from "./DOMEntities/cellDOM.js"
+import { createCellTag } from "./cellDOM.js"
 
 
 export class MapDOM {
