@@ -18,6 +18,8 @@ const yCellCnt = 26
 
 
 function main() {
+    console.log("YES")
+    
     const map = new Map(xCellCnt, yCellCnt)
     const mapDOM = new MapDOM(map.getMap())
     mapDOM.createMapDOM(map.getMap())
