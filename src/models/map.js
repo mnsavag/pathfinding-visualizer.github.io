@@ -1,5 +1,5 @@
 import { cellStates } from "/src/models/cellStates.js"
-import { Cell } from "./cell.js"
+import { Cell } from "/src/models/cell.js"
 
 export class Map {
     constructor(xCnt, yCnt) {
@@ -21,7 +21,7 @@ export class Map {
     }
     
     addObject(y, x, mapObj) {
-        let addEvent = new Event("addObject") // сделать в enum
+        let addEvent = new Event("addObject") // make by enum
         addEvent["mapObject"] = mapObj
         this._map[y][x].DOM.dispatchEvent(addEvent)
     }

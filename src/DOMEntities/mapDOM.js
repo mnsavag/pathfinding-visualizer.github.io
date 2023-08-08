@@ -1,43 +1,36 @@
-import { getDOMElement, getGreatestMultiple } from "/src/miscellaneous/utility.js"
-import { cellStates } from "/src/models/cellStates.js"
-import { createCellTag } from "./cellDOM.js"
+import { getGreatestMultiple, getSelectorHeight } from "/src/miscellaneous/utility.js"
+import { createCellTag } from "/src/DOMEntities/cellDOM.js"
 
 
 export class MapDOM {
-    constructor() {
-        this._mapSelector
-        this.xCnt
-        this.yCnt
+    constructor(map) {
+        this.xCnt = map[0].length
+        this.yCnt = map.length
+
+        const tableTag = document.createElement("table")
+        tableTag.setAttribute("class", "grid")
+
+        this._mapSelector = tableTag
     }
 
     createMapDOM(map) {
-        const tableTag = document.createElement("table") // сделать более читабельным
-        tableTag.setAttribute("class", "grid")
-        document.body.appendChild(tableTag)
-        this._mapSelector = tableTag
-        this.xCnt = map[0].length
-        this.yCnt = map.length
-        
-        this.resizeMapDOM()
-        map.forEach(row => {
+        document.body.appendChild(this._mapSelector)
+
+        for (const row of map) {
             let rowDOM = document.createElement("tr")
-            row.forEach(cell => {
+            for (const cell of row) {
                 const cellDOM = createCellTag(cell)
                 cell.DOM = cellDOM
-
                 rowDOM.appendChild(cellDOM)
-            })
+            }
             this._mapSelector.appendChild(rowDOM)
-        });
+        }
         this.resizeMapDOM()
     }
  
     resizeMapDOM() {
-        // change later
-        const header = document.querySelector(".header")
-        const sectionTool = document.querySelector(".section")
-        const headerHeight = getComputedStyle(header).height.slice(0, -2) // можно в метод вынести
-        const sectionToolHeight = getComputedStyle(sectionTool).height.slice(0, -2)
+        const headerHeight = getSelectorHeight(".header")
+        const sectionToolHeight = getSelectorHeight(".section")
 
         this._mapSelector.style.height = this._getResizeSideInPX(document.documentElement.clientHeight - headerHeight - sectionToolHeight, this.xCnt)
         this._mapSelector.style.width = this._getResizeSideInPX(document.documentElement.clientWidth, this.yCnt)
@@ -52,14 +45,14 @@ export class MapDOM {
     }
 
     addMapObjectEventListener() {
-        this._mapSelector.childNodes.forEach(row => {
-            row.childNodes.forEach(cell => {
+        for (const row of this._mapSelector.childNodes) {
+            for (const cell of row.childNodes) {
                 cell.addEventListener("addObject", (event) => {
                     const currCell = event.target 
                     currCell.className = event["mapObject"].cellClass
                     currCell.appendChild(event["mapObject"].getDOMView())
                 })
-            })
-        })
+            }
+        }
     }
 }

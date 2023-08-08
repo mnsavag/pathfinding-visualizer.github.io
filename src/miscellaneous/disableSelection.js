@@ -1,4 +1,10 @@
-export function preventSelection(element){
+/* 
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            NOT MY IMPLEMENT 
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+*/
+
+export function preventSelection(element) {
     var preventSelection = false;
   
     function addHandler(element, event, handler){
@@ -9,8 +15,9 @@ export function preventSelection(element){
           element.addEventListener(event, handler, false);
     }
 
-    function removeSelection(){
-      if (window.getSelection) { window.getSelection().removeAllRanges(); }
+    function removeSelection() {
+      if (window.getSelection) 
+        window.getSelection().removeAllRanges(); 
       else if (document.selection && document.selection.clear)
         document.selection.clear();
     }
@@ -56,7 +63,7 @@ export function preventSelection(element){
   
     // борем ctrl+A
     // скорей всего это и не надо, к тому же есть подозрение
-    // что в случае все же такой необходимости функцию нужно 
+    // что в случае такой необходимости функцию нужно 
     // вешать один раз и на document, а не на элемент
     addHandler(element, 'keydown', killCtrlA);
     addHandler(element, 'keyup', killCtrlA);

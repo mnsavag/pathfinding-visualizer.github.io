@@ -4,7 +4,7 @@ export class MapObject {
         this.logo = logo
     }
 
-    getDOMView() { // тоже в DOM кинуть
+    getDOMView() {
         const image = document.createElement("img")
         image.classList.add("mapObject")
         image.src = this.logo

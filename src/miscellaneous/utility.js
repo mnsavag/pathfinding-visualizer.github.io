@@ -6,11 +6,18 @@ export function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms))
 }
 
-export function getDOMElement(tag, id, className) { // createDOMElement где-то вообще вызывается?
-    const domElem = document.createElement(tag)
+export function getSelectorHeight(selector) {
+    const tag = document.querySelector(selector)
+    return getComputedStyle(tag).height.slice(0, -2)
+}
+
+
+export function getDOMElement(tag, id, className) {
+    const DOM = document.createElement(tag)
     let idAttr = document.createAttribute("id")
     idAttr.value = id
-    domElem.setAttributeNode(idAttr)
-    domElem.className = className
-    return domElem
+    
+    DOM.setAttributeNode(idAttr)
+    DOM.className = className
+    return DOM
 }

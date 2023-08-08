@@ -1,12 +1,9 @@
 import { cellStates } from "/src/models/cellStates.js"
+import { getDOMElement } from "/src/miscellaneous/utility.js"
 
 export function createCellTag(cell) {
-    const DOM = document.createElement("td")
-    let id = document.createAttribute("id")
-    id.value = cell.idDOM
-    DOM.setAttributeNode(id)
-    DOM.className = cell.state
-    return DOM
+    const cellDOM = getDOMElement("td", cell.idDOM, cell.state)
+    return cellDOM
 }
 
 export function registerAnimateEvents(map) {
@@ -23,16 +20,13 @@ function animateCellSpawn (event) {
     let cellSelector = event["props"]
 
     const divAnimation = document.createElement("div")
-    divAnimation.setAttribute("class", "div-animation") // поменять название
+    divAnimation.setAttribute("class", "div-animation")
     
-    if (cellSelector.className === cellStates.UNVISITED) { // вынести в отдельную функцию для понятного чтения кода и правильной смены классов
-        // mapObject класс не может быть убран
+    if (cellSelector.className === cellStates.UNVISITED)
         cellSelector.className = cellStates.VISITED
-    }
 
-    if (!cellSelector.classList.contains(cellStates.START) && !cellSelector.classList.contains(cellStates.FINISH)) {
+    if (!cellSelector.classList.contains(cellStates.START) && !cellSelector.classList.contains(cellStates.FINISH))
         cellSelector.appendChild(divAnimation)
-    }
 }
 
 function animateCellPath(event) {

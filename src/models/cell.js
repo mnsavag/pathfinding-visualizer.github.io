@@ -1,5 +1,3 @@
-import { cellStates } from "/src/models/cellStates.js"
-
 export class Cell {
     constructor(y, x, state) {
         this.y = y
@@ -11,13 +9,13 @@ export class Cell {
     }
 
     animateCellSpawn() {
-        let event = new Event("cellSpawnEvent") // сделать в enum
+        let event = new Event("cellSpawnEvent") // make by enum
         event["props"] = this.DOM
         this.DOM.dispatchEvent(event)
     }
 
     animateCellPath() {
-        let event = new Event("cellPathEvent") // сделать в enum
+        let event = new Event("cellPathEvent")
         event["props"] = this.DOM
         this.DOM.dispatchEvent(event)
     }

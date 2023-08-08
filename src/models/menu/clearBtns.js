@@ -1,25 +1,10 @@
 import { cellStates } from "/src/models/cellStates.js"
 
-export function addClearWallEvent() {
-    const clearWallBtn = document.getElementById("clear-wall")
-    clearWallBtn.addEventListener("click", () => {
-        clearWall()
-    });
-}
 
-export function addClearPathEvent() {
-    const clearPathBtn = document.getElementById("clear-path")
-    clearPathBtn.addEventListener("click", () => {
-        clearPath()
-    });
-}
-
-export function addClearBoardEvent(map, ...mapObjects) {
-    const clearPathBtn = document.getElementById("clear-board")
-    clearPathBtn.addEventListener("click", () => {
-        clearPath()
-        clearWall()
-    })
+export function registerClearBtnsEvent() {
+    addClearWallEvent()
+    addClearPathEvent()
+    addClearBoardEvent()
 }
 
 export function clearPath() {
@@ -38,6 +23,29 @@ export function clearPath() {
         block.className = cellStates.UNVISITED
     })
 }
+
+function addClearWallEvent() {
+    const clearWallBtn = document.getElementById("clear-wall")
+    clearWallBtn.addEventListener("click", () => {
+        clearWall()
+    });
+}
+
+function addClearPathEvent() {
+    const clearPathBtn = document.getElementById("clear-path")
+    clearPathBtn.addEventListener("click", () => {
+        clearPath()
+    });
+}
+
+function addClearBoardEvent(map, ...mapObjects) {
+    const clearPathBtn = document.getElementById("clear-board")
+    clearPathBtn.addEventListener("click", () => {
+        clearPath()
+        clearWall()
+    })
+}
+
 
 function clearWall() {
     const wallBlocks = document.querySelectorAll("." + cellStates.WALL)

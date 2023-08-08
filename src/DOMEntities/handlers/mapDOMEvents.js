@@ -1,34 +1,26 @@
 import { cellStates } from "/src/models/cellStates.js"
 
 
-export function addDraggableEvent(mapSelector) {
-    const dragList = []
-    for (const row of mapSelector.childNodes) {
-        for (const node of row.childNodes) {
-            if (node.querySelector("." + cellStates.OBJECT)) {
-                const draggable = node.querySelector("." + cellStates.OBJECT)
-                dragList.push(
-                    {
-                        cell: node, 
-                        cellStateName: node.className,
-                        obj: draggable
-                    })
-            }
-        }
-    }
+export function registerMapDOMHandlersEvent(mapSelector) {
+    addDraggableEvent(mapSelector)
+    addWallEvent(mapSelector)
+}
+
+function addDraggableEvent(mapSelector) {
+    const dragList = getNodesWithMapObject(mapSelector)
     
     dragList.forEach(draggable => {
-        draggable.obj.addEventListener("dragstart", () => {
-            draggable.cell.className = "unvisited"
-            draggable.obj.classList.add("dragging")
+        draggable.mapObj.addEventListener("dragstart", () => {
+            draggable.cellTag.className = "unvisited"
+            draggable.mapObj.classList.add("dragging")
         } )
     })
 
     dragList.forEach(draggable => {
-        draggable.obj.addEventListener("dragend", (e) => {
-            draggable.cell = draggable.obj.parentElement
-            draggable.cell.className = draggable.cellStateName
-            draggable.obj.classList.remove("dragging")
+        draggable.mapObj.addEventListener("dragend", () => {
+            draggable.cellTag = draggable.mapObj.parentElement
+            draggable.cellTag.className = draggable.tagClass
+            draggable.mapObj.classList.remove("dragging")
             
         })
     })
@@ -53,8 +45,26 @@ export function addDraggableEvent(mapSelector) {
     }
 }
 
+function getNodesWithMapObject(mapSelector) {
+    const dragList = []
+    for (const row of mapSelector.childNodes) {
+        for (const node of row.childNodes) {
+            if (node.querySelector("." + cellStates.OBJECT)) {
+                const draggable = node.querySelector("." + cellStates.OBJECT)
+                dragList.push(
+                    {
+                        cellTag: node, 
+                        tagClass: node.className,
+                        mapObj: draggable
+                    })
+            }
+        }
+    }
+    return dragList
+}
 
-export function addWallEvent(mapSelector) {
+
+function addWallEvent(mapSelector) {
     let isMouseDown = false
 
     mapSelector.childNodes.forEach(row => {
