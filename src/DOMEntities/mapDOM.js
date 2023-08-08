@@ -1,4 +1,4 @@
-import { getGreatestMultiple, getSelectorHeight } from "./miscellaneous/utility.js"
+import { getGreatestMultiple, getSelectorHeight } from "../miscellaneous/utility.js"
 import { createCellTag } from "./cellDOM.js"
 
 
