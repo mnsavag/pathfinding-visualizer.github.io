@@ -1,4 +1,4 @@
-# pathfinding-visualizer
+# Pathfinding Visualizer
 
 ### Implemented algorithms
 - BFS
