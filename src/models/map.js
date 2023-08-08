@@ -1,5 +1,5 @@
-import { cellStates } from "/src/models/cellStates.js"
-import { Cell } from "/src/models/cell.js"
+import { cellStates } from "./models/cellStates.js"
+import { Cell } from "./models/cell.js"
 
 export class Map {
     constructor(xCnt, yCnt) {
