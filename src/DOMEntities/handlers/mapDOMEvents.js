@@ -1,4 +1,4 @@
-import { cellStates } from ".../models/cellStates.js"
+import { cellStates } from "../../models/cellStates.js"
 
 
 export function registerMapDOMHandlersEvent(mapSelector) {
