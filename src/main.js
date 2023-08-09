@@ -30,9 +30,9 @@ function main() {
     registerInterface(mapDOM.getMapSelector())
     console.log("6")
     mapDOM.addMapObjectEventListener()
-    const player = new MapObject(cellStates.START, "/src/img/node-start.png")
+    const player = new MapObject(cellStates.START, "src/img/node-start.png")
     map.addObject(15, 12, player)
-    const finish = new MapObject(cellStates.FINISH, "/src/img/node-finish.png")
+    const finish = new MapObject(cellStates.FINISH, "src/img/node-finish.png")
     map.addObject(6, 46, finish)
 
     registerMapDOMEvents(mapDOM)
