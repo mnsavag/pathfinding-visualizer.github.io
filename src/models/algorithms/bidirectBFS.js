@@ -1,7 +1,7 @@
-import { cellStates } from "src/models/cellStates.js"
-import { Algorithm } from "src/models/algorithms/algorithm.js"
-import { sleep } from "src/miscellaneous/utility.js"
-import { getTempSpeed } from "src/models/menu/speedBtn.js"
+import { Algorithm } from "./algorithm.js"
+import { cellStates } from "../cellStates.js"
+import { getTempSpeed } from "../menu/speedBtn.js"
+import { sleep } from ".../miscellaneous/utility.js"
 
 const notAvailObj = {
     [cellStates.WALL]: true,

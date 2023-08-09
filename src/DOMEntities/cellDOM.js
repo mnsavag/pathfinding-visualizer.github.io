@@ -1,5 +1,5 @@
-import { cellStates } from "src/models/cellStates.js"
-import { getDOMElement } from "src/miscellaneous/utility.js"
+import { cellStates } from "../models/cellStates.js"
+import { getDOMElement } from "../miscellaneous/utility.js"
 
 export function createCellTag(cell) {
     const cellDOM = getDOMElement("td", cell.idDOM, cell.state)
