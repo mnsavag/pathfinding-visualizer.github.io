@@ -1,6 +1,6 @@
-import { Algorithm } from "/src/models/algorithms/algorithm.js"
-import { sleep } from "/src/miscellaneous/utility.js"
-import { getTempSpeed } from "/src/models/menu/speedBtn.js"
+import { Algorithm } from "src/models/algorithms/algorithm.js"
+import { sleep } from "src/miscellaneous/utility.js"
+import { getTempSpeed } from "src/models/menu/speedBtn.js"
 
 
 export class BFS extends Algorithm {
