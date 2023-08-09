@@ -1,11 +1,11 @@
-import { Algorithm } from "src/models/algorithms/algorithm.js"
-import { BFS } from "src/models/algorithms/bfs.js"
-import { DFS } from "src/models/algorithms/dfs.js"
-import { Dijkstra } from "src/models/algorithms/dijkstra.js"
-import { clearPath } from "src/models/menu/clearBtns.js"
-import { onDisableInteraction, offDisableInteraction } from "src/miscellaneous/disableInteraction.js"
-import { BidirectBFS } from "src/models/algorithms/bidirectBFS.js"
-import { AStar } from "src/models/algorithms/aStar.js"
+import { Algorithm } from "/src/models/algorithms/algorithm.js"
+import { BFS } from "/src/models/algorithms/bfs.js"
+import { DFS } from "/src/models/algorithms/dfs.js"
+import { Dijkstra } from "/src/models/algorithms/dijkstra.js"
+import { clearPath } from "/src/models/menu/clearBtns.js"
+import { onDisableInteraction, offDisableInteraction } from "/src/miscellaneous/disableInteraction.js"
+import { BidirectBFS } from "/src/models/algorithms/bidirectBFS.js"
+import { AStar } from "/src/models/algorithms/aStar.js"
 
 
 let currAlgorithm

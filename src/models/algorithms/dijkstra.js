@@ -1,7 +1,7 @@
-import { Algorithm } from "src/models/algorithms/algorithm.js"
-import { sleep } from "src/miscellaneous/utility.js"
-import { getTempSpeed } from "src/models/menu/speedBtn.js"
-import { Heap } from "src/models/algorithms/heap.js"
+import { Algorithm } from "/src/models/algorithms/algorithm.js"
+import { sleep } from "/src/miscellaneous/utility.js"
+import { getTempSpeed } from "/src/models/menu/speedBtn.js"
+import { Heap } from "/src/models/algorithms/heap.js"
 
 
 export class Dijkstra extends Algorithm {
