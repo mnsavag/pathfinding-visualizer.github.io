@@ -1,6 +1,6 @@
-import { cellStates } from "/src/models/cellStates.js"
-import { sleep } from "/src/miscellaneous/utility.js"
-import { getTempSpeed, getPathSpeed } from "/src/models/menu/speedBtn.js"
+import { cellStates } from "src/models/cellStates.js"
+import { sleep } from "src/miscellaneous/utility.js"
+import { getTempSpeed, getPathSpeed } from "src/models/menu/speedBtn.js"
 
 const notAvailObj = {
     [cellStates.WALL]: true,
@@ -52,7 +52,6 @@ export class Algorithm {
             y = ancestors[[y, x]][0]
             x = ancestors[[tempY, x]][1]
         }
-
         while (path.length > 0) {
             const [y, x] = path.pop()
             map[y][x].animateCellPath()
