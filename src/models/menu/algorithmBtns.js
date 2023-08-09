@@ -5,7 +5,7 @@ import { Dijkstra } from "../algorithms/dijkstra.js"
 import { BidirectBFS } from "../algorithms/bidirectBFS.js"
 import { AStar } from "../algorithms/aStar.js"
 import { clearPath } from "./menu/clearBtns.js"
-import { onDisableInteraction, offDisableInteraction } from ".../miscellaneous/disableInteraction.js"
+import { onDisableInteraction, offDisableInteraction } from "../../miscellaneous/disableInteraction.js"
 
 
 let currAlgorithm

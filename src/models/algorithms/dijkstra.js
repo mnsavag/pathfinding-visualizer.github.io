@@ -1,7 +1,7 @@
 import { Heap } from "./heap.js"
 import { Algorithm } from "./algorithm.js"
 import { getTempSpeed } from "../menu/speedBtn.js"
-import { sleep } from ".../miscellaneous/utility.js"
+import { sleep } from "../../miscellaneous/utility.js"
 
 
 export class Dijkstra extends Algorithm {

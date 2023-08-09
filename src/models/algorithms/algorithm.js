@@ -1,6 +1,6 @@
 import { getTempSpeed, getPathSpeed } from "../menu/speedBtn.js"
 import { cellStates } from "../cellStates.js"
-import { sleep } from ".../miscellaneous/utility.js"
+import { sleep } from "../../miscellaneous/utility.js"
 
 const notAvailObj = {
     [cellStates.WALL]: true,
