@@ -1,5 +1,5 @@
 # Pathfinding Visualizer
-
+You can access it here https://mnsavag.github.io/pathfinding-visualizer/ (use Google Chrome)
 ### Implemented algorithms
 - BFS
 - DFS
