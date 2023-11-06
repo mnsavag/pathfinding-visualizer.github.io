@@ -47,15 +47,35 @@ function registerVisualiseBtn(map) {
         if (hasAlgorithm()) {
             clearPath()
             onDisableInteraction()
+
+            const menuTitles = document.querySelectorAll(".menu__btn")
+            menuTitles.forEach((item) => {
+                item.classList.add("red")
+            })
+            
             await Algorithm.search(currAlgorithm.search, map)
             offDisableInteraction()
+            menuTitles.forEach((item) => {
+                item.classList.remove("red")
+            })
+        }
+        else {
+            const originalText = visualiseBtn.textContent
+            let algorithmBtn = document.querySelector(".menu__btn.algorithm")
+
+            visualiseBtn.textContent = "Choose an algorithm!"
+            algorithmBtn.classList.add("animation")
+            setTimeout(() => {
+              visualiseBtn.textContent = originalText
+              algorithmBtn.classList.remove("animation")
+            }, 1500)
         }
     })
 }
 
 function hasAlgorithm() {
-    return algorithmsData.find(obj => {
-        if (obj.name === visualiseBtn.innerHTML) {
+    return algorithmsData.find((item) => {
+        if (item.name === visualiseBtn.innerHTML) {
             return true
         }
     })
