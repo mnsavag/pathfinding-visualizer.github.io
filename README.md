@@ -9,7 +9,7 @@ You can access it here https://mnsavag.github.io/pathfinding-visualizer/ (use Go
 - Dijkstra
 - Bidirectional BFS
 - A*
-- 
+
 ### Interacting with app
 
 #### Wall node
