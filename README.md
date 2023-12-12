@@ -18,7 +18,7 @@ You can put up a wall by clicking on an empty cell and remove a wall by clicking
 
 #### Change positions
 
-It is also possible to transfer the start and end positions
+It is also possible to transfer the start and end positions using drag-n-drop
 
 #### Buttons
 
