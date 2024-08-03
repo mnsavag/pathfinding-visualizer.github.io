@@ -1,6 +1,6 @@
 # Pathfinding Visualizer
 
-You can access it here https://mnsavag.github.io/pathfinding-visualizer/ (use Google Chrome)
+You can access it here https://mnsavag.github.io/pathfinding-visualizer.github.io/ (use Google Chrome)
 
 ### Implemented algorithms
 
